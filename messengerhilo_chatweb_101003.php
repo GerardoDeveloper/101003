@@ -38,7 +38,7 @@
 			),
 			"_alta obra social" => Array (
 				"asunto" => "Alta - Plan de Salud",
-				"destinatarios" => "administracionch@sancorsalud.com.ar,arasosaguenaga@gmail.com"
+				"destinatarios" => "administracionch@sancorsalud.com.ar,antonio.ferrero@sancorsalud.com.ar,arasosaguenaga@gmail.com"
 			),
 			"_consulta disponibilidad" => Array (
 				"asunto" => "¿Cuántos días de licencia tengo?",
