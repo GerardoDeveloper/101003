@@ -1,0 +1,30 @@
+{"recipient":{"id":"-"},"message":{
+				"quick_replies":[
+				
+							{
+							"content_type":"text",
+							"title":"Banco",			
+							"payload":"_banco"
+							}	,
+							{
+							"content_type":"text",
+							"title":"Recibo de Sueldo",			
+							"payload":"_recibo de sueldo"
+							}	,
+							{
+							"content_type":"text",
+							"title":"Obra Social",			
+							"payload":"_obra social"
+							}	,
+							{
+							"content_type":"text",
+							"title":"Licencias",			
+							"payload":"_descripcion licencias"
+							}	,
+							{
+							"content_type":"text",
+							"title":"Adelantos",			
+							"payload":"_adelantos a"
+							}							  
+				],
+			"text":"Puedo ayudarte en otras consultas \uD83D\uDE01"},"messaging_type":"","conexion":"317ef225-47f1-4991-84c2-25399e61e693"}

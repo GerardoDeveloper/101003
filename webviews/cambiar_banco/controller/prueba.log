@@ -1,0 +1,140 @@
+Set log en true Array
+(
+    [conid] => fdb20bdb-e0a1-4dbb-8997-5d95125de43e
+    [empresa] => daasdadadas
+    [apellidos] => dsggdgdfgdgdf
+    [nombres] => hfghhghfghf
+    [dni] => 4343242423424
+    [banco] => fghfhfhfghf
+    [cbu] => 535345345345553
+    [fecha_ingreso] => 2020-11-06
+    [provincia] => vcbcbcvbcbc
+    [userid] => ZmRiMjBiZGItZTBhMS00ZGJiLTg5OTctNWQ5NTEyNWRlNDNl
+    [function] => updateformulario
+)
+Set log en true Array
+(
+    [conid] => fdb20bdb-e0a1-4dbb-8997-5d95125de43e
+    [empresa] => sadasdadad
+    [apellidos] => fsdfsdfsdsfs
+    [nombres] => hhhfhfhfh
+    [dni] => 4342423424
+    [banco] => fgdgdfgdfg
+    [cbu] => 456456456456456
+    [fecha_ingreso] => 2020-11-06
+    [provincia] => ccbcbcbcbc
+    [userid] => ZmRiMjBiZGItZTBhMS00ZGJiLTg5OTctNWQ5NTEyNWRlNDNl
+    [function] => updateformulario
+)
+Set log en true Array
+(
+    [conid] => fdb20bdb-e0a1-4dbb-8997-5d95125de43e
+    [empresa] => saffsdffd
+    [apellidos] => dfdfsfsfs
+    [nombres] => gfgdgdfgdg
+    [dni] => 54535345345
+    [banco] => hghfghfhfh
+    [cbu] => 6564644
+    [fecha_ingreso] => 2020-11-06
+    [provincia] => bbvcbcb
+    [userid] => ZmRiMjBiZGItZTBhMS00ZGJiLTg5OTctNWQ5NTEyNWRlNDNl
+    [function] => updateformulario
+)
+Set log en true Array
+(
+    [conid] => fdb20bdb-e0a1-4dbb-8997-5d95125de43e
+    [empresa] => asdadadadad
+    [apellidos] => dsfsfsdfsfs
+    [nombres] => gdfgdfgdfgdfg
+    [dni] => 666466464
+    [banco] => ghfghfhfg
+    [cbu] => 7757567757577
+    [fecha_ingreso] => 2020-11-06
+    [provincia] => gdgdgdfgdg
+    [userid] => ZmRiMjBiZGItZTBhMS00ZGJiLTg5OTctNWQ5NTEyNWRlNDNl
+    [function] => updateformulario
+)
+Set log en true Array
+(
+    [conid] => fdb20bdb-e0a1-4dbb-8997-5d95125de43e
+    [empresa] => dfssdfdfs
+    [apellidos] => gfhfhfhghf
+    [nombres] => uiyuiuyiyiiy
+    [dni] => 5645646464
+    [banco] => khjkkhkhj
+    [cbu] => 8786686786
+    [fecha_ingreso] => 2020-11-06
+    [provincia] => cxcvxcvxv
+    [userid] => ZmRiMjBiZGItZTBhMS00ZGJiLTg5OTctNWQ5NTEyNWRlNDNl
+    [function] => updateformulario
+)
+Set log en true Array
+(
+    [conid] => fdb20bdb-e0a1-4dbb-8997-5d95125de43e
+    [empresa] => cxzcxczxcxcz
+    [apellidos] => dffsfdffs
+    [nombres] => fgdfdgfgd
+    [dni] => 453534535
+    [banco] => hghfghfghf
+    [cbu] => 6654654646
+    [fecha_ingreso] => 2020-11-06
+    [provincia] => xcxvxcvx
+    [userid] => ZmRiMjBiZGItZTBhMS00ZGJiLTg5OTctNWQ5NTEyNWRlNDNl
+    [function] => updateformulario
+)
+Set log en true Array
+(
+    [conid] => fdb20bdb-e0a1-4dbb-8997-5d95125de43e
+    [empresa] => Empresa prueba
+    [apellidos] => Apell prueba
+    [nombres] => Nombre prueba
+    [dni] => 11111111111111
+    [banco] => Banco prueba
+    [cbu] => 44444444444444444
+    [fecha_ingreso] => 2020-11-06
+    [provincia] => Prov. prueba
+    [userid] => ZmRiMjBiZGItZTBhMS00ZGJiLTg5OTctNWQ5NTEyNWRlNDNl
+    [function] => updateformulario
+)
+Set log en true Array
+(
+    [conid] => f827a24b-2d5f-4162-a490-ea643607a4b0
+    [empresa] => Sancor
+    [apellidos] => Sosa
+    [nombres] => Aracei
+    [dni] => 28302112
+    [banco] => prueba de banco
+    [cbu] => 123
+    [fecha_ingreso] => 2020-11-06
+    [provincia] => santa fe
+    [userid] => ZjgyN2EyNGItMmQ1Zi00MTYyLWE0OTAtZWE2NDM2MDdhNGIw
+    [function] => updateformulario
+)
+Set log en true Array
+(
+    [conid] => f9819c81-7557-45e5-8595-7e10679b1967
+    [empresa] => Prueba cambiar banco
+    [apellidos] => Sosa
+    [nombres] => Araceli
+    [dni] => 454560091111111111111111111111111111111111111111111111111111111111111111
+    [banco] => prueba de banco
+    [cbu] => 1212121211111111111111111111111111111111111111111111111111111111111
+    [fecha_ingreso] => 2020-09-17
+    [provincia] => 4546556
+    [userid] => Zjk4MTljODEtNzU1Ny00NWU1LTg1OTUtN2UxMDY3OWIxOTY3
+    [function] => updateformulario
+)
+Set log en true Array
+(
+    [conid] => 803df3d3-40c5-4e69-8239-067885dbcc87
+    [empresa] => AMS
+    [apellidos] => Rodriguez 
+    [nombres] => Matias
+    [dni] => 33333321
+    [banco] => Macro
+    [cbu] => 284735853458924582034852
+    [fecha_ingreso] => 2020-12-01
+    [provincia] => Santa Fe
+    [userid] => ODAzZGYzZDMtNDBjNS00ZTY5LTgyMzktMDY3ODg1ZGJjYzg3
+    [function] => updateformulario
+)
