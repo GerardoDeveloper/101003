@@ -59,7 +59,7 @@ if ($continuar == true) {
         }
     }
 
-		//Solicitud del dni
+		//Solicitud del dni desde la bbdd
     if (!$primerVezVida) {
         if (in_array($ultimosDos[1]["mensaje"], $palabrasLegajo)) {
             $dni = utf8_encode($palabra);
