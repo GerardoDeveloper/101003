@@ -45,6 +45,7 @@ textarea {
     /*overflow-y: scroll;  */
     margin-bottom: 1rem;
     padding: 5px 0;
+    font-family: 'Titillium web', sans-serif !important;
 }
 
 .control-wrapper {
@@ -60,7 +61,8 @@ textarea {
 
 .form-control {
     width: 100%;
-    border-radius: 2rem;
+    /* border-radius: 2rem; */
+    border-radius: 2px;
     padding: 15px 15px;
     font-size: 1rem;
     outline: none;
@@ -114,7 +116,8 @@ select {
 
 .luvi-primary-button {
     color: #fff;
-    background: #1b3871;
+    background: #364962;
+    font-family: 'Titillium web', sans-serif !important;
     /*background: -moz-linear-gradient(150deg, rgba(73,5,206,1) 0%, rgba(0,62,163,1) 100%);
     background: -webkit-linear-gradient(150deg, rgba(73,5,206,1) 0%, rgba(0,62,163,1) 100%);
     background: linear-gradient(150deg, rgba(73,5,206,1) 0%, rgba(0,62,163,1) 100%);

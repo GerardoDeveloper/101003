@@ -138,3 +138,45 @@ Set log en true Array
     [userid] => ODAzZGYzZDMtNDBjNS00ZTY5LTgyMzktMDY3ODg1ZGJjYzg3
     [function] => updateformulario
 )
+Set log en true Array
+(
+    [conid] => 83b62c09-4392-48c6-a3b3-c13a203d59cc
+    [empresa] => Google_prueba
+    [apellidos] => Bustos_prueba
+    [nombres] => Jorge_prueba
+    [dni] => 11111111
+    [banco] => Rio_prueba
+    [cbu] => 2121211425366958
+    [fecha_ingreso] => 2020-12-03
+    [provincia] => Santa fe_prueba
+    [userid] => ODNiNjJjMDktNDM5Mi00OGM2LWEzYjMtYzEzYTIwM2Q1OWNj
+    [function] => updateformulario
+)
+Set log en true Array
+(
+    [conid] => fb86278e-e5de-45ff-a0fa-ff24964b52bf
+    [empresa] => prueba
+    [apellidos] => prueba
+    [nombres] => prueba
+    [dni] => 12452115
+    [banco] => prueba
+    [cbu] => 123
+    [fecha_ingreso] => 1970-09-17
+    [provincia] => Santa Fe
+    [userid] => ZmI4NjI3OGUtZTVkZS00NWZmLWEwZmEtZmYyNDk2NGI1MmJm
+    [function] => updateformulario
+)
+Set log en true Array
+(
+    [conid] => 32d539eb-0d67-4620-9a85-9450f0a90394
+    [empresa] => Empresa ejemplo
+    [apellidos] => Perez
+    [nombres] => Juan
+    [dni] => 21122121
+    [banco] => Ejemplo
+    [cbu] => 1425366958745847
+    [fecha_ingreso] => 2020-12-10
+    [provincia] => Ejemplo
+    [userid] => MzJkNTM5ZWItMGQ2Ny00NjIwLTlhODUtOTQ1MGYwYTkwMzk0
+    [function] => updateformulario
+)
