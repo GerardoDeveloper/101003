@@ -67,10 +67,14 @@ if ($continuar == true) {
             $query = "SELECT * FROM nomina_dni WHERE dni  = '$dni' ORDER BY id DESC LIMIT 1";
             $res = $obj->executeQuery($query);
             if (count($res) > 0) {
-                $apel_nom = $res[0]["apel_nom"];
-                $arr_apel_nom = explode(',', $apel_nom);
-                $_nombre_ = utf8_decode($arr_apel_nom[1]);
-                $_apellido_ = utf8_decode($arr_apel_nom[0]);
+                //Nomina anterior a la actual.
+                // $apel_nom = $res[0]["apel_nom"];
+                // $arr_apel_nom = explode(',', $apel_nom);
+                // $_nombre_ = utf8_decode($arr_apel_nom[1]);
+                // $_apellido_ = utf8_decode($arr_apel_nom[0]);
+                $_nombre_ = utf8_decode($res[0]["nombre"]);
+                $_apellido_ = utf8_decode($res[0]["apellido"]);
+
                 actualizarLegajo($sender, $_nombre_, $_apellido_, intval($palabra));
 
                 $_nombre_ = utf8_encode($_nombre_);
