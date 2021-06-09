@@ -127,9 +127,9 @@ $("#tipo_licencia").on("change", function() {
                 $(this).css("display", "none");
             });
 
-            let resData = JSON.parse(res);
-            $("#cantidad_dias").text(resData.cantidad_dias);
-            $("#observaciones").text(resData.observaciones);
+            // let resData = JSON.parse(res);
+            // $("#cantidad_dias").text(resData.cantidad_dias);
+            // $("#observaciones").text(resData.observaciones);
         },
         error: function(e) {
             console.log("Error Updating");

@@ -92,13 +92,13 @@
                     </select>
                 </div>
 
-                <div class="control-wrapper">
+                <!-- <div class="control-wrapper">
                     <textarea name="cantidad_dias" id="cantidad_dias" readonly placeholder="Cantidad de dias" class="form-control" required rows="5"></textarea>
-                </div>
+                </div> -->
 
-                <div class="control-wrapper">
+                <!-- <div class="control-wrapper">
                     <textarea name="observaciones" id="observaciones" readonly placeholder="Observaciones" class="form-control" required rows="5"></textarea>
-                </div>
+                </div> -->
             </form>
 
             <div class="buttons-wrapper">
