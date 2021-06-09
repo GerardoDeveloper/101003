@@ -180,3 +180,31 @@ Set log en true Array
     [userid] => MzJkNTM5ZWItMGQ2Ny00NjIwLTlhODUtOTQ1MGYwYTkwMzk0
     [function] => updateformulario
 )
+Set log en true Array
+(
+    [conid] => 146b8d74-ca5a-4968-9d4b-baad528b96eb
+    [empresa] => Araceli
+    [apellidos] => sosa
+    [nombres] => araceli
+    [dni] => 87548558
+    [banco] => prueba cambio de banco
+    [cbu] => 123
+    [fecha_ingreso] => 1980-09-17
+    [provincia] => santa fe
+    [userid] => MTQ2YjhkNzQtY2E1YS00OTY4LTlkNGItYmFhZDUyOGI5NmVi
+    [function] => updateformulario
+)
+Set log en true Array
+(
+    [conid] => 146b8d74-ca5a-4968-9d4b-baad528b96eb
+    [empresa] => Araceli
+    [apellidos] => sosa
+    [nombres] => araceli
+    [dni] => 87548558
+    [banco] => prueba cambio de banco
+    [cbu] => 123
+    [fecha_ingreso] => 1980-09-17
+    [provincia] => santa fe
+    [userid] => MTQ2YjhkNzQtY2E1YS00OTY4LTlkNGItYmFhZDUyOGI5NmVi
+    [function] => updateformulario
+)
