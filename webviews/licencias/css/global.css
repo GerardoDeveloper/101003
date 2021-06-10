@@ -31,7 +31,6 @@ textarea {
     align-items: center;
     width: 100%;
     justify-content: space-around;
-    height: 90%;
 }
 
 /*.logo-wrapper {
@@ -42,9 +41,7 @@ textarea {
 .form-wrapper {
     width: 80%;
     max-height: 100%;
-    /*overflow-y: scroll;  */
     margin-bottom: 1rem;
-    padding: 5px 0;
     font-family: 'Titillium web', sans-serif !important;
 }
 
@@ -61,14 +58,12 @@ textarea {
 
 .form-control {
     width: 100%;
-    /* border-radius: 2rem; */
-    border-radius: 2px;
+    border-radius: 8px;
     padding: 15px 15px;
     font-size: 1rem;
     outline: none;
     border: 0;
-    background: #e4e4e4;
-    color: #585858;
+    color: #0963AC;
     transition: all 220ms ease-in-out;
     will-change: transform;
 }
@@ -91,7 +86,7 @@ textarea {
     color: var(--text-color);
 }
 ::-ms-input-placeholder { /* Microsoft Edge */
-    color: var(--text-color);   
+    color: var(--text-color);
 }
 
 ::placeholder { /* Most modern browsers support this now. */
@@ -99,10 +94,11 @@ textarea {
 }
 
 select {
-    background: url(../images/arrow.svg) no-repeat right #e4e4e4 !important;
+    /* background: url(../images/arrow.svg) no-repeat right #e4e4e4 !important; */
     -webkit-appearance: none;
     background-size: 15px !important;
     background-position-x: calc(100% - 15px) !important;
+    border: 2px solid #A9F756!important;
 }
 
 .buttons-wrapper {
@@ -115,8 +111,8 @@ select {
 }
 
 .luvi-primary-button {
-    color: #fff;
-    background: #364962;
+    color: #0963AC;
+    background: #F2F2F2;
     font-family: 'Titillium web', sans-serif !important;
     /*background: -moz-linear-gradient(150deg, rgba(73,5,206,1) 0%, rgba(0,62,163,1) 100%);
     background: -webkit-linear-gradient(150deg, rgba(73,5,206,1) 0%, rgba(0,62,163,1) 100%);

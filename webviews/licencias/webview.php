@@ -91,19 +91,11 @@
                         <?php echo $tipos_licencia; ?>
                     </select>
                 </div>
-
-                <!-- <div class="control-wrapper">
-                    <textarea name="cantidad_dias" id="cantidad_dias" readonly placeholder="Cantidad de dias" class="form-control" required rows="5"></textarea>
-                </div> -->
-
-                <!-- <div class="control-wrapper">
-                    <textarea name="observaciones" id="observaciones" readonly placeholder="Observaciones" class="form-control" required rows="5"></textarea>
-                </div> -->
             </form>
 
             <div class="buttons-wrapper">
                 <div class="control-wrapper">
-                    <button name="btnClose" id="btnClose" class="button luvi-primary-button form-control" style="width: 7em; margin-left: auto; margin-right: auto;" type="button">Cerrar</button>
+                    <button name="btnClose" id="btnClose" class="button luvi-primary-button form-control" style="width: 5em; margin-left: auto; padding: 6px 6px;" type="button">Cerrar</button>
                 </div>                
             </div>
         </div>
