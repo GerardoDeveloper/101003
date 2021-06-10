@@ -114,10 +114,23 @@ select {
     color: #0963AC;
     background: #F2F2F2;
     font-family: 'Titillium web', sans-serif !important;
+    box-shadow: 1px 2px 3px 1px rgba(123,118,118,0.6);
+    -webkit-box-shadow: 1px 2px 3px 1px rgba(123,118,118,0.6);
+    -moz-box-shadow: 1px 2px 3px 1px rgba(123,118,118,0.6);
     /*background: -moz-linear-gradient(150deg, rgba(73,5,206,1) 0%, rgba(0,62,163,1) 100%);
     background: -webkit-linear-gradient(150deg, rgba(73,5,206,1) 0%, rgba(0,62,163,1) 100%);
     background: linear-gradient(150deg, rgba(73,5,206,1) 0%, rgba(0,62,163,1) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#4905ce",endColorstr="#003ea3",GradientType=1);*/
+}
+.luvi-primary-button:hover{
+    background: #A9F756;
+    box-shadow: 1px 2px 3px 1px rgba(123,118,118,0.6);
+    -webkit-box-shadow: 1px 2px 3px 1px rgba(123,118,118,0.6);
+    -moz-box-shadow: 1px 2px 3px 1px rgba(123,118,118,0.6);
+}
+
+.luvi-primary-button:active{
+    background: #cfcfcf;
 }
 
 .luvi-secondary-button {
