@@ -57,13 +57,12 @@ body {
 
 .form-control {
     width: 100%;
-    /* border-radius: 2rem; */
-    border-radius: 2px;
-    padding: 15px 15px;
+    border-radius: .7rem;
+    padding: 10px 10px;
     font-size: 1rem;
     outline: none;
-    border: 0;
-    background: #e4e4e4;
+    border: 2px solid #A9F756;
+    background: #ffffff;
     color: #585858;
     transition: all 220ms ease-in-out;
     will-change: transform;
@@ -91,7 +90,7 @@ body {
 }
 
 ::placeholder { /* Most modern browsers support this now. */
-    color: var(--text-color);
+    color: #0083FF;
 }
 
 select {
@@ -111,19 +110,50 @@ select {
 }
 
 .luvi-primary-button {
-    color: #fff;
-    background: #364962;
+    color: #A9F756;
+    background: #0963AC;
+    border: none;
+    border-radius: .7rem;
     font-family: 'Titillium Web', sans-serif;
-    /*background: -moz-linear-gradient(150deg, rgba(73,5,206,1) 0%, rgba(0,62,163,1) 100%);
-    background: -webkit-linear-gradient(150deg, rgba(73,5,206,1) 0%, rgba(0,62,163,1) 100%);
-    background: linear-gradient(150deg, rgba(73,5,206,1) 0%, rgba(0,62,163,1) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#4905ce",endColorstr="#003ea3",GradientType=1);*/
+}
+
+.luvi-primary-button:hover{
+    color: #0963AC;
+    background: #A9F756;
+    border: none;
+    border-radius: .7rem;
+    font-family: 'Titillium Web', sans-serif;
+}
+
+.luvi-primary-button:active{
+    color: #A9F756;
+    background: #0963AC;
+    border: none;
+    border-radius: .7rem;
+    font-family: 'Titillium Web', sans-serif;
 }
 
 .luvi-secondary-button {
-    background: transparent;
-    border: 2px solid #364962;
-    color: #364962;
+    background: #F2F2F2;
+    border: none;
+    border-radius: .7rem;
+    color: #0963AC;
+    font-family: 'Titillium Web', sans-serif;
+}
+
+.luvi-secondary-button:hover {
+    background: #e2e2e2;
+    border: none;
+    border-radius: .7rem;
+    color: #0963AC;
+    font-family: 'Titillium Web', sans-serif;
+}
+
+.luvi-secondary-button:active {
+    background: #F2F2F2;
+    border: none;
+    border-radius: .7rem;
+    color: #0963AC;
     font-family: 'Titillium Web', sans-serif;
 }
 
