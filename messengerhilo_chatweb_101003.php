@@ -106,8 +106,6 @@ if ($continuar == true) {
             $dni = $res[0]["dni"];
             $banco = $res[0]['banco'];
             $cbu = $res[0]['cbu'];
-            $fecha_ingreso = $res[0]['fecha_ingreso'];
-            $provincia = $res[0]['provincia'];
 
             $asunto = "Solicitud de cambio de banco";
             $dest = "administracionch@sancorsalud.com.ar,arasosaguenaga@gmail.com";
@@ -118,8 +116,6 @@ if ($continuar == true) {
             $texto .= "<b>DNI:</b> $dni <br />";
             $texto .= "<b>Banco:</b> <br /> $banco <br />";
             $texto .= "<b>CBU:</b> <br /> $cbu <br />";
-            $texto .= "<b>Fecha ingreso:</b> <br /> $fecha_ingreso <br />";
-            $texto .= "<b>Provincia:</b> <br /> $provincia <br />";
 
             $query = "INSERT INTO cd_mails (fecha, enviado, texto, asunto, destinatarios) ";
             $query .= "VALUES ('$ahora', 0, '$texto', '$asunto', '$dest')";

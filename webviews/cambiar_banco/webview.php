@@ -106,23 +106,6 @@
                 <div class="control-wrapper">
                     <input type="number" name="cbu" id="cbu" placeholder="CBU" class="form-control" autocomplete="off" required>
                 </div>
-
-                <div class="control-wrapper">
-                    <input type="text" name="fecha_ingreso" id="fecha_ingreso" placeholder="Fecha de Ingreso" class="form-control" autocomplete="off" required onfocus="(this.type='date')" required onblur="(this.type='text')">
-                </div>
-
-                <div class="control-wrapper">
-                    <input type="text" name="provincia" id="provincia" placeholder="Provincia" class="form-control" autocomplete="off" required>
-                </div>
-
-                <!-- <div class="control-wrapper">
-                    <textarea name="comment" id="comment" placeholder="Propuesta" class="form-control" required rows="5"></textarea>
-                </div>
-
-                <div class="col-12">
-					<input  type="file" id="file" name="file" placeholder="Adjuntar archivo" style="color:black!important;">
-				</div> -->
-                
             </form>
 
             <div class="buttons-wrapper">

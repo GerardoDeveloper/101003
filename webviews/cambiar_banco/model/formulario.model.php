@@ -65,13 +65,13 @@
 			}
 		}
 		
-		public function updateFormulario($identificador, $fecha_fin, $empresa, $apellidos, $nombres, $dni, $banco, $cbu, $fecha_ingreso, $provincia) {
+		public function updateFormulario($identificador, $fecha_fin, $empresa, $apellidos, $nombres, $dni, $banco, $cbu) {
 			try {
 				$this->conn->setAttribute();
 
 				$this->conn->beginTransaction();
 
-				$sql = "UPDATE " . TB_FORMULARIO . " set fecha_fin = '$fecha_fin', empresa = '$empresa', apellidos = '$apellidos', nombres = '$nombres', dni = '$dni', banco = '$banco', cbu= '$cbu', fecha_ingreso = '$fecha_ingreso', provincia= '$provincia' WHERE identificador = '$identificador' ORDER BY id DESC LIMIT 1";
+				$sql = "UPDATE " . TB_FORMULARIO . " set fecha_fin = '$fecha_fin', empresa = '$empresa', apellidos = '$apellidos', nombres = '$nombres', dni = '$dni', banco = '$banco', cbu= '$cbu' WHERE identificador = '$identificador' ORDER BY id DESC LIMIT 1";
 				
 				$query = $this->conn->prepare($sql);
 				
