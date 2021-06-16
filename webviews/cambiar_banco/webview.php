@@ -64,9 +64,9 @@
 <body>
     <div class="container">
         <div class="content-wrapper">
-            <div class="logo-wrapper">
+            <!-- <div class="logo-wrapper">
                 
-            </div>
+            </div> -->
 
             <form id="formData" class="form-wrapper">
                 <?php
