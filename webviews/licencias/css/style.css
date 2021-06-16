@@ -24,4 +24,13 @@
 .tipo_licencia_select{
   border: 2px solid #A9F756;
   color: #0963AC;
+  border-radius: 0.6rem;
+  background-color: #A9F756;
+}
+
+
+.textarea_TipoDetalleLicencia{
+  border: 2px solid #A9F756;
+  border-radius: 1.5rem;
+  color: #0963AC;
 }

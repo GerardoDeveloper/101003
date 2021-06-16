@@ -91,7 +91,7 @@
                 </div>
 
                 <div class="mb-3">
-                    <textarea class="form-control" name="detale_licencia" id="detale_licencia" cols="30" rows="10" disabled placeholder="Detalle del tipo de licencia seleccionada"></textarea>
+                    <textarea class="form-control textarea_TipoDetalleLicencia" name="detale_licencia" id="detale_licencia" readonly cols="30" rows="10"  placeholder="Detalle del tipo de licencia seleccionada"></textarea>
                 </div>
             </form>
 
