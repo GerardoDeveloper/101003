@@ -36,7 +36,7 @@ body {
     width: 80%;
     max-height: 100%;
     /*overflow-y: scroll;  */
-    margin-bottom: 1rem;
+    /* margin-bottom: 1rem; */
     padding: 5px 0;
     font-family: 'Titillium Web', sans-serif;
 }
@@ -45,7 +45,8 @@ body {
     width: 97%;
     display: flex;
     margin: 0 auto;
-    justify-content: space-between;
+    justify-content: end;
+    margin: 5px 5px;
 }
 
 .control-wrapper:not(:last-child) {
@@ -56,13 +57,17 @@ body {
     width: 100%;
     border-radius: .7rem;
     padding: 10px 10px;
-    font-size: 1rem;
+    font-size: 12px;
     outline: none;
     border: 2px solid #A9F756;
     background: #ffffff;
     color: #585858;
     transition: all 220ms ease-in-out;
     will-change: transform;
+}
+
+.luvi-secondary-button{
+ margin-left: 1rem;
 }
 
 .form-control:not(.button):focus {
@@ -102,8 +107,9 @@ select {
 }
 
 .control-wrapper button {
-    width: 45%;
+    width: 30%;
     cursor: pointer;
+    margin-left: auto;
 }
 
 .luvi-primary-button {
