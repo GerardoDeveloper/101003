@@ -25,7 +25,6 @@
   border: 2px solid #A9F756;
   color: #0963AC;
   border-radius: 0.6rem;
-  background-color: #A9F756;
 }
 
 
@@ -33,4 +32,8 @@
   border: 2px solid #A9F756;
   border-radius: 1.5rem;
   color: #0963AC;
+  /* sobresribe la clase ".form-control:disabled, .form-control[readonly]" y la propiedad de bootstrap
+     para que el fondo del textarea sea blanco.
+  */
+  background-color: #ffffff !important;
 }
