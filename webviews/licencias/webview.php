@@ -66,6 +66,25 @@
     <!-- <link rel="stylesheet" href="css/global.css?<?php echo $timestamp ?>"> -->
 </head>
 <body>
+<!--Indicador de carga-->
+    <div class="loader fadeIn">
+        <div class="lds-spinner">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <!-- end_loader -->
+    
     <div class="container">
         <div class="content-wrapper">
             <form id="formData" class="form-wrapper">
@@ -103,7 +122,7 @@
         </div>
     </div>
 
-    <div class="overlay loader"></div>
+    <!-- <div class="overlay loader"></div>
     <div class="sk-circle loader">
         <div class="sk-circle1 sk-child"></div>
         <div class="sk-circle2 sk-child"></div>
@@ -117,7 +136,7 @@
         <div class="sk-circle10 sk-child"></div>
         <div class="sk-circle11 sk-child"></div>
         <div class="sk-circle12 sk-child"></div>
-    </div>    
+    </div>     -->
 
     <script src="libs/jquery.min.js"></script>
     <script>var userId = "<?php echo base64_encode($userId) ?>";</script>    
