@@ -1,3 +1,6 @@
+/**
+ * Cierra el webview.
+ */
 const cerrarWebview = () => {
     if ($("#conid").length > 0) {
         let conid = $("#conid").attr("data-value");
@@ -68,7 +71,7 @@ $(".form-control:not(.button)").click(function() {
 });
 
 $("#btnCancel").click(function() {
-    eval(closeWebView);
+    cerrarWebview();
 });
 
 $("#btnSend").on("click", function(event) {

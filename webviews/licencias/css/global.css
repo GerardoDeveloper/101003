@@ -13,16 +13,10 @@ body {
     padding: 0;
 }
 
-textarea {
-    resize: none;
-}
-
 .container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    height: 407px !important;
 }
 
 .content-wrapper {
@@ -30,7 +24,6 @@ textarea {
     flex-direction: column;
     align-items: center;
     width: 100%;
-    justify-content: space-around;
     height: 90%;
 }
 
@@ -45,6 +38,7 @@ textarea {
     /*overflow-y: scroll;  */
     margin-bottom: 1rem;
     padding: 5px 0;
+    font-family: 'Titillium Web', sans-serif;
 }
 
 .control-wrapper {
@@ -60,12 +54,12 @@ textarea {
 
 .form-control {
     width: 100%;
-    border-radius: 2rem;
-    padding: 15px 15px;
-    font-size: 1rem;
+    border-radius: .7rem;
+    padding: 10px 10px;
+    font-size: 12px !important;
     outline: none;
-    border: 0;
-    background: #e4e4e4;
+    border: 2px solid #A9F756;
+    background: #ffffff;
     color: #585858;
     transition: all 220ms ease-in-out;
     will-change: transform;
@@ -93,7 +87,7 @@ textarea {
 }
 
 ::placeholder { /* Most modern browsers support this now. */
-    color: var(--text-color);
+    color: #0083FF;
 }
 
 select {
@@ -113,18 +107,51 @@ select {
 }
 
 .luvi-primary-button {
-    color: #fff;
-    background: #1b3871;
-    /*background: -moz-linear-gradient(150deg, rgba(73,5,206,1) 0%, rgba(0,62,163,1) 100%);
-    background: -webkit-linear-gradient(150deg, rgba(73,5,206,1) 0%, rgba(0,62,163,1) 100%);
-    background: linear-gradient(150deg, rgba(73,5,206,1) 0%, rgba(0,62,163,1) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#4905ce",endColorstr="#003ea3",GradientType=1);*/
+    color: #A9F756;
+    background: #0963AC;
+    border: none;
+    border-radius: .7rem;
+    font-family: 'Titillium Web', sans-serif;
+}
+
+.luvi-primary-button:hover{
+    color: #0963AC;
+    background: #A9F756;
+    border: none;
+    border-radius: .7rem;
+    font-family: 'Titillium Web', sans-serif;
+}
+
+.luvi-primary-button:active{
+    color: #A9F756;
+    background: #0963AC;
+    border: none;
+    border-radius: .7rem;
+    font-family: 'Titillium Web', sans-serif;
 }
 
 .luvi-secondary-button {
-    background: transparent;
-    border: 2px solid #1b3871;
-    color: #1b3871;
+    background: #F2F2F2;
+    border: none;
+    border-radius: .7rem;
+    color: #0963AC;
+    font-family: 'Titillium Web', sans-serif;
+}
+
+.luvi-secondary-button:hover {
+    background: #e2e2e2;
+    border: none;
+    border-radius: .7rem;
+    color: #0963AC;
+    font-family: 'Titillium Web', sans-serif;
+}
+
+.luvi-secondary-button:active {
+    background: #F2F2F2;
+    border: none;
+    border-radius: .7rem;
+    color: #0963AC;
+    font-family: 'Titillium Web', sans-serif;
 }
 
 /* Spinner loader */
@@ -155,7 +182,7 @@ select {
     margin: 0 auto;
     width: 15%;
     height: 15%;
-    background-color: #0083FF;
+    background-color: #0963AC;
     border-radius: 100%;
     -webkit-animation: sk-circleBounceDelay 1.2s infinite ease-in-out both;
     animation: sk-circleBounceDelay 1.2s infinite ease-in-out both;

@@ -1,0 +1,46 @@
+/* Para resetear los estilos por defecto que vienen en el navegador  */
+*{
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+/* Botón Cancelar */
+.btn-secondary{
+  color: #0963AC;
+  background-color: #f2f2f2;
+  border-color: #F2F2F2;
+  margin-right: 4rem;
+  border-radius: 0.3rem;
+}
+
+.btn-secondary:hover{
+  color: #0963AC;
+  background-color: #e2e2e2;
+  border-color: #e2e2e2;
+  margin-right: 4rem;
+  border-radius: 0.3rem;
+
+}
+
+/* botón Enviar */
+.btn-primary{
+ color: #A9F756;
+ background-color: #0963AC;
+ border-color: #0963AC;
+ border-radius: 0.3rem;
+}
+
+.btn-primary:hover{
+ color: #0963AC;
+ background-color: #A9F756;
+ border-color: #A9F756;
+ border-radius: 0.3rem;
+}
+
+/* Sobresribe los input del formulario de bootstrap */
+.form-control{
+  border-radius: 0.7rem;
+  padding: 10px 10px;
+  border: 2px solid #A9F756;
+}

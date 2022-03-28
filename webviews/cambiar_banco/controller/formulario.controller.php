@@ -38,8 +38,8 @@
 			return $res;
 		}
 
-		function updateFormulario($identificador, $fecha_fin, $empresa, $apellidos, $nombres, $dni, $banco, $cbu, $fecha_ingreso, $provincia) {
-			$res = $this->modelInstancia->updateFormulario($identificador, $fecha_fin, $empresa, $apellidos, $nombres, $dni, $banco, $cbu, $fecha_ingreso, $provincia);
+		function updateFormulario($identificador, $fecha_fin, $empresa, $apellidos, $nombres, $dni, $banco, $cbu) {
+			$res = $this->modelInstancia->updateFormulario($identificador, $fecha_fin, $empresa, $apellidos, $nombres, $dni, $banco, $cbu);
 			setLog($res[0], $res[1], false);
 			return $res;
 		}		
@@ -70,9 +70,7 @@
 			isset($_POST["nombres"]) AND !empty($_POST["nombres"]) AND
 			isset($_POST["dni"]) AND !empty($_POST["dni"]) AND
 			isset($_POST["banco"]) AND !empty($_POST["banco"]) AND
-			isset($_POST["cbu"]) AND !empty($_POST["cbu"]) AND
-			isset($_POST["fecha_ingreso"]) AND !empty($_POST["fecha_ingreso"]) AND
-			isset($_POST["provincia"]) AND !empty($_POST["provincia"])
+			isset($_POST["cbu"]) AND !empty($_POST["cbu"])
 		) {
 			$empresa = $_POST["empresa"];
 			$apellidos = $_POST["apellidos"];
@@ -80,8 +78,6 @@
 			$dni = $_POST["dni"];
 			$banco = $_POST["banco"];
 			$cbu = $_POST["cbu"];
-			$fecha_ingreso = $_POST["fecha_ingreso"];
-			$provincia = $_POST["provincia"];
 
 			$userid   = base64_decode($_POST["userid"]);
 		} 
@@ -90,9 +86,7 @@
 				isset($_GET["nombres"]) AND !empty($_GET["nombres"]) AND
 				isset($_GET["dni"]) AND !empty($_GET["dni"]) AND
 				isset($_GET["banco"]) AND !empty($_GET["banco"]) AND
-				isset($_GET["cbu"]) AND !empty($_GET["cbu"]) AND
-				isset($_GET["fecha_ingreso"]) AND !empty($_GET["fecha_ingreso"]) AND
-				isset($_GET["provincia"]) AND !empty($_GET["provincia"])
+				isset($_GET["cbu"]) AND !empty($_GET["cbu"])
 		) {
 			$empresa = $_GET["empresa"];
 			$apellidos = $_GET["apellidos"];
@@ -100,8 +94,6 @@
 			$dni = $_GET["dni"];
 			$banco = $_GET["banco"];
 			$cbu = $_GET["cbu"];
-			$fecha_ingreso = $_GET["fecha_ingreso"];
-			$provincia = $_GET["provincia"];
 
 			$userid   = base64_decode($_GET["userid"]);
 		} 
@@ -111,7 +103,7 @@
 		
 		$fecha_fin = date("Y/m/d H:i:s");
 		$controller = FormularioController::getInstance();
-		$r = $controller->updateFormulario($userid, $fecha_fin, $empresa, $apellidos, $nombres, $dni, $banco, $cbu, $fecha_ingreso, $provincia);
+		$r = $controller->updateFormulario($userid, $fecha_fin, $empresa, $apellidos, $nombres, $dni, $banco, $cbu);
 				
 		if ($r[0] == 1){
 			file_put_contents(__DIR__ . '/prueba.log', "Set log en true ".print_r($_POST,TRUE), FILE_APPEND);

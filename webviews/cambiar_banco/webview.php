@@ -1,13 +1,11 @@
 <?php
-    //file_put_contents(__DIR__ . '/prueba.log', print_r($_SERVER, true), FILE_APPEND);
 	try {
 		error_reporting(E_ALL ^ E_NOTICE ^ E_WARNING);
-		
 		session_start();
-		
+
 		include_once("inc/functions.php");
 		include_once("controller/formulario.controller.php");
-		
+
 		$fecha = new DateTime();
 		$timestamp = $fecha->getTimestamp();
 
@@ -19,12 +17,11 @@
 					$userId = $_POST["userid"];
 				} else {
 					$userId = "";
-					
 					die();
 				}
 			}
 		}
-		
+
 		$_SESSION["userid"] = $userId;
 
 		if (isset($_GET["conid"]) && !empty($_GET["conid"])) {
@@ -35,15 +32,15 @@
 			$origen = "facebook";
 		}
 
-        if(($origen == "web" && array_key_exists("HTTP_SEC_FETCH_DEST", $_SERVER) 
-        && $_SERVER["HTTP_SEC_FETCH_DEST"] == "iframe") 
+        if(($origen == "web" && array_key_exists("HTTP_SEC_FETCH_DEST", $_SERVER)
+        && $_SERVER["HTTP_SEC_FETCH_DEST"] == "iframe")
         || $origen == "facebook")
         {
-            $instancia = FormularioController::getInstance();        
-            $instancia->insertFormulario($userId, date("Y/m/d H:i:s"), $origen);    
+            $instancia = FormularioController::getInstance();
+            $instancia->insertFormulario($userId, date("Y/m/d H:i:s"), $origen);
         }
 
-	} 
+	}
 	catch (Exception $e) {
 		$error = $e->getMessage();
 		setLog(0, $error);
@@ -56,19 +53,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Formulario Cambiar Banco</title>
+    <title>Cambiar Banco</title>
 
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/global.css?<?php echo $timestamp ?>">
+    <!-- <link rel="stylesheet" href="css/global.css?<?php echo $timestamp ?>"> -->
+    <link rel="stylesheet" href="../library/bootstrap-4.5.3-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css?<?php echo $timestamp ?>">
 </head>
 <body>
     <div class="container">
         <div class="content-wrapper">
-            <div class="logo-wrapper">
-                
-            </div>
-
-            <form id="formData" class="form-wrapper">
+            <!-- formulario -->
+            <form id="formData" class=".container mt-3">
                 <?php
                     unset($_SESSION["conid"]);
 
@@ -83,7 +79,7 @@
                         echo '<input type="hidden" name="conid" id="conid" value="' . $_SESSION["conid"] . '" data-value="' . $_SESSION["conid"] . '" />';
                     }
                 ?>
-                <div class="control-wrapper">
+                <!-- <div class="control-wrapper">
                     <input type="text" name="empresa" id="empresa" placeholder="Empresa" class="form-control" autocomplete="off" required>
                 </div>
 
@@ -105,33 +101,71 @@
 
                 <div class="control-wrapper">
                     <input type="number" name="cbu" id="cbu" placeholder="CBU" class="form-control" autocomplete="off" required>
+                </div> -->
+
+                <!-- Empresa -->
+                <div class="form-group">
+                    <label for="empresa" class="col-sm col-md col-lg col-xl">
+                        <span></span>
+                        <input class="form-control" type="text" name="empresa" id="empresa" placeholder="Empresa" autocomplete="on" required>
+                    </label>
                 </div>
 
-                <div class="control-wrapper">
-                    <input type="text" name="fecha_ingreso" id="fecha_ingreso" placeholder="Fecha de Ingreso" class="form-control" autocomplete="off" required onfocus="(this.type='date')" required onblur="(this.type='text')">
+                <!-- Apellido/s -->
+                <div class="form-group">
+                    <label for="apellidos" class="col-sm col-md col-lg col-xl">
+                        <span></span>
+                        <input class="form-control" type="text" name="apellidos" id="apellidos" placeholder="Apellido/s" autocomplete="on" required>
+                    </label>
                 </div>
 
-                <div class="control-wrapper">
-                    <input type="text" name="provincia" id="provincia" placeholder="Provincia" class="form-control" autocomplete="off" required>
+                <!-- Nombre/s -->
+                <div class="form-group">
+                    <label for="nombres" class="col-sm col-md col-lg col-xl">
+                        <span></span>
+                        <input class="form-control" type="text" name="nombres" id="nombres" placeholder="Nombre/s" autocomplete="on" required>
+                    </label>
                 </div>
 
-                <!-- <div class="control-wrapper">
-                    <textarea name="comment" id="comment" placeholder="Propuesta" class="form-control" required rows="5"></textarea>
+                <!-- DNI -->
+                <div class="form-group">
+                    <label for="dni" class="col-sm col-md col-lg col-xl">
+                        <span></span>
+                        <input class="form-control" type="number" name="dni" id="dni" placeholder="DNI" autocomplete="on" required>
+                    </label>
                 </div>
 
-                <div class="col-12">
-					<input  type="file" id="file" name="file" placeholder="Adjuntar archivo" style="color:black!important;">
-				</div> -->
-                
+                <!-- Banco -->
+                <div class="form-group">
+                    <label for="banco" class="col-sm col-md col-lg col-xl">
+                        <span></span>
+                        <input class="form-control" type="text" name="banco" id="banco" placeholder="Banco" autocomplete="on" required>
+                    </label>
+                </div>
+
+                <!-- CBU -->
+                <div class="form-group">
+                    <label for="cbu" class="col-sm col-md col-lg col-xl">
+                        <span></span>
+                        <input class="form-control" type="number" name="cbu" id="cbu" placeholder="CBU" autocomplete="on" required>
+                    </label>
+                </div>
+
+                <!-- Botones -->
+                <div class="col-sm col-md col-lg col-xl">
+                    <div class="float-right">
+                        <input class="btn btn-secondary" type="button" id="btnCancel" value="Cancelar">
+                        <input class="btn btn-primary" type="submit" id="btnSend" value="Enviar">
+                    </div>
+                </div>
             </form>
-
+<!--
             <div class="buttons-wrapper">
                 <div class="control-wrapper">
-                   
                     <button id="btnCancel" class="button luvi-secondary-button form-control" type="button">Cancelar</button>
                     <button id="btnSend" class="button luvi-primary-button form-control" type="button">Enviar</button>
-                </div>                
-            </div>
+                </div>
+            </div> -->
         </div>
     </div>
 

@@ -1,3 +1,25 @@
+//Aparece y desaparece el indicador de carga
+const toggleFade = (e) => {
+    if (!e) {
+        return;
+    }
+    if (e.classList.contains("fadeOut")) {
+        e.classList.add("fadeIn");
+        e.classList.remove("fadeOut");
+    } else if (e.classList.contains("fadeIn")) {
+        e.classList.add("fadeOut");
+        e.classList.remove("fadeIn");
+    }
+}
+
+//Carga de la pagina.
+document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('detale_licencia').style.display = 'none';
+
+    toggleFade(document.querySelector('.loader'));
+});
+
+// Cierra el formulario.
 const cerrarWebview = () => {
     if ($("#conid").length > 0) {
         let conid = $("#conid").attr("data-value");
@@ -5,7 +27,7 @@ const cerrarWebview = () => {
         let url = "https://labs357.com.ar/closeWebChatModalTv.php";
         xhr.open("POST", url, true);
         xhr.setRequestHeader("Content-Type", "application/json");
-        xhr.onreadystatechange = function() {
+        xhr.onreadystatechange = function () {
             console.log(xhr);
         };
         let data = JSON.stringify({
@@ -18,7 +40,7 @@ const cerrarWebview = () => {
     }
 }
 
-(function(d, s, id) {
+(function (d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0];
 
     if (d.getElementById(id)) {
@@ -31,10 +53,10 @@ const cerrarWebview = () => {
     fjs.parentNode.insertBefore(js, fjs);
 
     const totalHeight = window.innerHeight;
-    document.getElementsByClassName("container")[0].style.height = totalHeight + "px";    
+    document.getElementsByClassName("container")[0].style.height = totalHeight + "px";
 }(document, 'script', 'Messenger'));
 
-window.extAsyncInit = function() {
+window.extAsyncInit = function () {
     try {
 
     } catch (e) {
@@ -42,7 +64,7 @@ window.extAsyncInit = function() {
     }
 };
 
-$(".form-control:not(.button)").click(function() {
+$(".form-control:not(.button)").click(function () {
     const formTop = $("#formData").offset().top;
     const formHeight = $("#formData").height();
     const controlTop = $(this).offset().top;
@@ -54,25 +76,24 @@ $(".form-control:not(.button)").click(function() {
     if (controlTotal > formTotal || controlTop < formTop) {
         const xValue = controlTotal > formTotal ? controlTop : formTop - controlTop - 15;
         $("#formData").stop().animate(
-            {scrollTop: xValue},
+            { scrollTop: xValue },
             500,
             'swing'
-        );        
+        );
     }
 });
 
-$("#btnClose").on("click", function(event) {
+// Hace una petición al server al hacer cick en cerrarWebview.
+$("#btnClose").on("click", function (event) {
     event.preventDefault();
 
     if ($("#formData")[0].reportValidity() == false) {
         return false;
     }
 
-    $(".loader").fadeIn("slow", function() {
-        $(this).css("display", "block");
-    });
+    toggleFade(document.querySelector('.loader'));
 
-    let tipo_lic= $("#tipo_licencia");
+    let tipo_lic = $("#tipo_licencia");
     let opt = tipo_lic[0][tipo_lic[0].selectedIndex].value;
     let data = new FormData();
 
@@ -87,27 +108,26 @@ $("#btnClose").on("click", function(event) {
         contentType: false,
         cache: false,
         processData: false,
-        success: function(res) {
-            //console.log(res)
-            $(".loader").fadeOut("slow", function() {
-                $(this).css("display", "none");
-            });
+        success: function (res) {
+            toggleFade(document.querySelector('.loader'));
             cerrarWebview();
             return;
         },
-        error: function(e) {
+        error: function (e) {
             console.log("Error Updating");
             console.log(e);
         }
     });
 });
 
-$("#tipo_licencia").on("change", function() {
- 
-    $(".loader").fadeIn("slow", function() {
+$("#tipo_licencia").on("change", function () {
+    toggleFade(document.querySelector('.loader'));
+
+
+    $("#detale_licencia").fadeIn("slow", function () {
         $(this).css("display", "block");
     });
-    
+
     let opt = this.options[this.selectedIndex].value;
     let data = new FormData($("#formData")[0]);
     data.append("userid", userId);
@@ -121,17 +141,13 @@ $("#tipo_licencia").on("change", function() {
         contentType: false,
         cache: false,
         processData: false,
-        success: function(res) {
-            //console.log(res)
-            $(".loader").fadeOut("slow", function() {
-                $(this).css("display", "none");
-            });
+        success: function (res) {
+            toggleFade(document.querySelector('.loader'));
 
             let resData = JSON.parse(res);
-            $("#cantidad_dias").text(resData.cantidad_dias);
-            $("#observaciones").text(resData.observaciones);
+            $("#detale_licencia").text(resData.cantidad_dias + "\n\n" + resData.observaciones);
         },
-        error: function(e) {
+        error: function (e) {
             console.log("Error Updating");
             console.log(e);
         }

@@ -61,15 +61,32 @@
     <title>Formulario Licencias</title>
 
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/global.css?<?php echo $timestamp ?>">
+    <link rel="stylesheet" href="../library/bootstrap-4.5.3-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../licencias/css/style.css?<?php echo $timestamp?>">
+    <!-- <link rel="stylesheet" href="css/global.css?<?php echo $timestamp ?>"> -->
 </head>
 <body>
+<!--Indicador de carga-->
+    <div class="loader fadeIn">
+        <div class="lds-spinner">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <!-- end_loader -->
+    
     <div class="container">
         <div class="content-wrapper">
-            <div class="logo-wrapper">
-                
-            </div>
-
             <form id="formData" class="form-wrapper">
                 <?php
                     unset($_SESSION["conid"]);
@@ -85,31 +102,27 @@
                         echo '<input type="hidden" name="conid" id="conid" value="' . $_SESSION["conid"] . '" data-value="' . $_SESSION["conid"] . '" />';
                     }
                 ?>
-                <div class="control-wrapper">
-                    <select name="tipo_licencia" id="tipo_licencia" class="form-control" autocomplete="off" required onfocus="(this.options[0].style.display='none')">
+                <div class="mt-3 mb-3">
+                    <select name="tipo_licencia" id="tipo_licencia" class="form-control tipo_licencia_select" autocomplete="off" required onfocus="(this.options[0].style.display='none')">
                         <option value="" disabled selected>Selecciona el tipo de licencia</option>
                         <?php echo $tipos_licencia; ?>
                     </select>
                 </div>
 
-                <div class="control-wrapper">
-                    <textarea name="cantidad_dias" id="cantidad_dias" readonly placeholder="Cantidad de dias" class="form-control" required rows="5"></textarea>
-                </div>
-
-                <div class="control-wrapper">
-                    <textarea name="observaciones" id="observaciones" readonly placeholder="Observaciones" class="form-control" required rows="5"></textarea>
+                <div class="mb-3">
+                    <textarea class="form-control textarea_TipoDetalleLicencia" name="detale_licencia" id="detale_licencia" readonly cols="30" rows="10"  placeholder="Detalle del tipo de licencia seleccionada"></textarea>
                 </div>
             </form>
 
             <div class="buttons-wrapper">
                 <div class="control-wrapper">
-                    <button name="btnClose" id="btnClose" class="button luvi-primary-button form-control" style="width: 7em; margin-left: auto; margin-right: auto;" type="button">Cerrar</button>
-                </div>                
+                    <button name="btnClose" id="btnClose" class="btn btn-primary float-right" type="button">Cerrar</button>
+                </div>
             </div>
         </div>
     </div>
 
-    <div class="overlay loader"></div>
+    <!-- <div class="overlay loader"></div>
     <div class="sk-circle loader">
         <div class="sk-circle1 sk-child"></div>
         <div class="sk-circle2 sk-child"></div>
@@ -123,7 +136,7 @@
         <div class="sk-circle10 sk-child"></div>
         <div class="sk-circle11 sk-child"></div>
         <div class="sk-circle12 sk-child"></div>
-    </div>    
+    </div>     -->
 
     <script src="libs/jquery.min.js"></script>
     <script>var userId = "<?php echo base64_encode($userId) ?>";</script>    
