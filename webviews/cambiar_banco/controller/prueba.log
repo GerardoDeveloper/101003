@@ -232,3 +232,27 @@ Set log en true Array
     [userid] => ZWYxNjVjNzUtYjZjMS00ZDI0LTk5OWMtMTkwMmMxNDU4MTli
     [function] => updateformulario
 )
+Set log en true Array
+(
+    [conid] => a0b9dcaa-d36e-43d2-9260-c39ca87fdadd
+    [empresa] => Prueba de bot
+    [apellidos] => prueba 
+    [nombres] => prueba
+    [dni] => 28541552
+    [banco] => prueba
+    [cbu] => 123
+    [userid] => YTBiOWRjYWEtZDM2ZS00M2QyLTkyNjAtYzM5Y2E4N2ZkYWRk
+    [function] => updateformulario
+)
+Set log en true Array
+(
+    [conid] => fa4899b3-d333-4154-9690-0a84706a8403
+    [empresa] => ESTO ES UNA PRUEBA DE SISTEMAS
+    [apellidos] => PRUEBA
+    [nombres] => PRUEBA
+    [dni] => 2542532
+    [banco] => BANCO PRUEBA
+    [cbu] => 3436463634636346
+    [userid] => ZmE0ODk5YjMtZDMzMy00MTU0LTk2OTAtMGE4NDcwNmE4NDAz
+    [function] => updateformulario
+)

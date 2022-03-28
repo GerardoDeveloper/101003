@@ -19,6 +19,10 @@ $MESSAGE_URL = 'https://tv1.chatbotamerica.com/Home/CallBackPlataformPost';
 
 if ($continuar == true) {
     require_once __DIR__ . "/functions.php";
+
+    // $fecha = date("Y/m/d H:i:s");
+    // file_put_contents(__DIR__ . '/prueba.log', $fecha . "\n\n" . "Entro al bot con: $palabra" . "\n\n", FILE_APPEND);
+
     $mailKeywords = array(
         "_derivar banco" => array(
             "asunto" => "¿En qué banco se abrió mi cuenta?",
@@ -40,10 +44,11 @@ if ($continuar == true) {
             "asunto" => "Alta - Plan de Salud",
             "destinatarios" => "administracionch@sancorsalud.com.ar,antonio.ferrero@sancorsalud.com.ar,arasosaguenaga@gmail.com",
         ),
-        "_consulta disponibilidad" => array(
-            "asunto" => "¿Cuántos días de licencia tengo?",
-            "destinatarios" => "administracionch@sancorsalud.com.ar,arasosaguenaga@gmail.com",
-        ),
+        //Se desabilita esta palabra para cancelar el envio de email solicitado por el cliente.
+        // "_consulta disponibilidad" => array(
+        //     "asunto" => "¿Cuántos días de licencia tengo?",
+        //     "destinatarios" => "administracionch@sancorsalud.com.ar,arasosaguenaga@gmail.com",
+        // ),
     );
 
     $palabrasLegajo = array("_portada", "_pedir legajo", "_legajo invalido");
@@ -59,7 +64,7 @@ if ($continuar == true) {
         }
     }
 
-		//Solicitud del dni desde la bbdd
+    //Solicitud del dni desde la bbdd
     if (!$primerVezVida) {
         if (in_array($ultimosDos[1]["mensaje"], $palabrasLegajo)) {
             $dni = utf8_encode($palabra);
@@ -85,7 +90,7 @@ if ($continuar == true) {
             } else {
                 if ($palabra != "_form enviado 1" && $palabra != "_tambien puedo") {
                     $palabra = "_legajo invalido";
-								}
+                }
             }
         }
     }
@@ -154,7 +159,7 @@ if ($continuar == true) {
         die();
     }
 
-    //DialogFlow
+    //DialogFlow AI
     $resAdministrar = $obj->getAdministrar($palabra);
     $resAlias = $obj->getAlias($palabra);
     if (
@@ -497,6 +502,9 @@ if ($continuar == true) {
         die();
     }
 
+    /**
+     * Envio de email.
+     */
     if (in_array($palabra, array_keys($mailKeywords))) {
         $res = $obj->getUsuario($sender);
 
