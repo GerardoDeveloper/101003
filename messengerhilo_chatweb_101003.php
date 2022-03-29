@@ -54,6 +54,7 @@ if ($continuar == true) {
     // =======================================Se desabilita junto con las validaciones del DNI=============================
     else {
         $ultimosDos = $obj->getUltimos($sender, 2);
+
         if (!in_array($ultimosDos[1]["mensaje"], $palabrasLegajo)) {
             $tieneLegajo = tieneLegajo($sender);
             $palabra = $tieneLegajo ? $palabra : "_pedir legajo";
@@ -68,12 +69,9 @@ if ($continuar == true) {
 
             $query = "SELECT * FROM nomina_dni WHERE dni  = '$dni' ORDER BY id DESC LIMIT 1";
             $res = $obj->executeQuery($query);
+
+            // Sí la consulta trae resultados.
             if (count($res) > 0) {
-                //Nomina anterior a la actual.
-                // $apel_nom = $res[0]["apel_nom"];
-                // $arr_apel_nom = explode(',', $apel_nom);
-                // $_nombre_ = utf8_decode($arr_apel_nom[1]);
-                // $_apellido_ = utf8_decode($arr_apel_nom[0]);
                 $_nombre_ = utf8_decode($res[0]["nombre"]);
                 $_apellido_ = utf8_decode($res[0]["apellido"]);
 
@@ -288,7 +286,7 @@ if ($continuar == true) {
         }
     }
 
-    // =====================================Se desabilita junto cn la validación del DNI================================
+    // =====================================Este if sobre escrbe la palabra "_portada"================================
     if (strtolower($palabra) == "_portada b") {
         $keyword = urlencode($palabra);
         $urlJson1 = "https://labs357.com.ar/witai/Keyword/?cuenta=$cuenta&keyword=$keyword&prefijotabla=cw_";
@@ -313,7 +311,6 @@ if ($continuar == true) {
         $data = str_replace("<PSID>", $sender, $data);
         $data = str_replace("\\\\n", "\n", $data);
         $data = json_decode($data, true);
-        //$data["recipient"]["id"] = $sender;
 
         $data = addProperties($data);
         $data = utf8_converter($data);
@@ -501,6 +498,8 @@ if ($continuar == true) {
         echo $jsonData;
         die();
     }
+
+    
 
     /**
      * Envio de email.

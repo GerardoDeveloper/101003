@@ -1,0 +1,1 @@
+SELECT * FROM detalle_licenciaWHERE id_tipo_licencia = 7
