@@ -20,8 +20,7 @@ $MESSAGE_URL = 'https://tv1.chatbotamerica.com/Home/CallBackPlataformPost';
 if ($continuar == true) {
     require_once __DIR__ . "/functions.php";
 
-    // $fecha = date("Y/m/d H:i:s");
-    // file_put_contents(__DIR__ . '/prueba.log', $fecha . "\n\n" . "Entro al bot con: $palabra" . "\n\n", FILE_APPEND);
+    setLogDebug("Entro al bot con la palabra: $palabra");
 
     $mailKeywords = array(
         "_derivar banco" => array(
@@ -42,7 +41,7 @@ if ($continuar == true) {
         ),
         "_alta obra social" => array(
             "asunto" => "Alta - Plan de Salud",
-            "destinatarios" => "administracionch@sancorsalud.com.ar,antonio.ferrero@sancorsalud.com.ar,arasosaguenaga@gmail.com",
+            "destinatarios" => "administracionch@sancorsalud.com.ar,eugenia.armando@sancorsalud.com.ar,arasosaguenaga@gmail.com",
         ),
         //Se desabilita esta palabra para cancelar el envio de email solicitado por el cliente.
         // "_consulta disponibilidad" => array(
@@ -56,7 +55,9 @@ if ($continuar == true) {
     if ($primerVezVida) {
         $palabra = "_portada";
         insertarEntrante($sender, $palabra);
-    } else {
+    }
+    // =======================================Se desabilita junto con las validaciones del DNI=============================
+    else {
         $ultimosDos = $obj->getUltimos($sender, 2);
         if (!in_array($ultimosDos[1]["mensaje"], $palabrasLegajo)) {
             $tieneLegajo = tieneLegajo($sender);
@@ -64,6 +65,7 @@ if ($continuar == true) {
         }
     }
 
+    // =======================================Se desabilita junto con las validaciones del DNI=============================
     //Solicitud del dni desde la bbdd
     if (!$primerVezVida) {
         if (in_array($ultimosDos[1]["mensaje"], $palabrasLegajo)) {
@@ -129,6 +131,7 @@ if ($continuar == true) {
         }
     }
 
+    // =======================================Se desabilita junto con las validaciones del DNI=============================
     if (strtolower($palabra) == "_pedir legajo") {
         insertarEntrante($sender, $palabra);
 
@@ -144,6 +147,7 @@ if ($continuar == true) {
         die();
     }
 
+    // =======================================Se desabilita junto con las validaciones del DNI=============================
     if (strtolower($palabra) == "_legajo invalido") {
         insertarEntrante($sender, $palabra);
 
@@ -289,6 +293,7 @@ if ($continuar == true) {
         }
     }
 
+    // =====================================Se desabilita junto cn la validación del DNI================================
     if (strtolower($palabra) == "_portada b") {
         $keyword = urlencode($palabra);
         $urlJson1 = "https://labs357.com.ar/witai/Keyword/?cuenta=$cuenta&keyword=$keyword&prefijotabla=cw_";
