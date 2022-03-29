@@ -43,11 +43,6 @@ if ($continuar == true) {
             "asunto" => "Alta - Plan de Salud",
             "destinatarios" => "administracionch@sancorsalud.com.ar,eugenia.armando@sancorsalud.com.ar,arasosaguenaga@gmail.com",
         ),
-        //Se desabilita esta palabra para cancelar el envio de email solicitado por el cliente.
-        // "_consulta disponibilidad" => array(
-        //     "asunto" => "¿Cuántos días de licencia tengo?",
-        //     "destinatarios" => "administracionch@sancorsalud.com.ar,arasosaguenaga@gmail.com",
-        // ),
     );
 
     $palabrasLegajo = array("_portada", "_pedir legajo", "_legajo invalido");
