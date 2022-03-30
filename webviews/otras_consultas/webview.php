@@ -22,7 +22,6 @@ try {
                     $userId = $_POST["userid"];
                 } else {
                     $userId = "";
-
                     die();
                 }
             }
@@ -32,8 +31,12 @@ try {
 
         if (isset($_GET["conid"]) && !empty($_GET["conid"])) {
             $origen = "web";
+            $_SESSION["conid"] = $_GET["conid"];
+            $conId = $_GET["conid"];
         } else if (isset($_POST["conid"]) && !empty($_POST["conid"])) {
             $origen = "web";
+            $_SESSION["conid"] = $_POST["conid"];
+            $conId = $_POST["conid"];
         } else {
             $origen = "facebook";
         }
@@ -78,6 +81,11 @@ try {
 </head>
 
 <body>
+    <?php
+if (isset($_SESSION["conid"])) {
+    echo '<input type="hidden" id="conid" data-value="' . $_SESSION["conid"] . '" />';
+}
+?>
     <!--Indicador de carga-->
     <div class="loader fadeIn">
         <div class="lds-spinner">
@@ -133,26 +141,9 @@ try {
         </div>
     </div>
 
-    <!-- <div class="overlay loader"></div>
-    <div class="sk-circle loader">
-        <div class="sk-circle1 sk-child"></div>
-        <div class="sk-circle2 sk-child"></div>
-        <div class="sk-circle3 sk-child"></div>
-        <div class="sk-circle4 sk-child"></div>
-        <div class="sk-circle5 sk-child"></div>
-        <div class="sk-circle6 sk-child"></div>
-        <div class="sk-circle7 sk-child"></div>
-        <div class="sk-circle8 sk-child"></div>
-        <div class="sk-circle9 sk-child"></div>
-        <div class="sk-circle10 sk-child"></div>
-        <div class="sk-circle11 sk-child"></div>
-        <div class="sk-circle12 sk-child"></div>
-    </div>     -->
-
     <script src="libs/jquery.min.js"></script>
     <script>
-        // var userId = "<?php echo base64_encode($userId) ?>";
-        var conid = "<?php echo base64_encode($conid) ?>";
+        let conid = "<?php echo base64_encode($conId) ?>";
     </script>
     <script src="js/global.js?<?php echo $timestamp ?>"></script>
 </body>

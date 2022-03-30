@@ -87,6 +87,8 @@ class FormularioController
     }
 }
 
+session_start(); //Se inicia la session
+
 if (isset($_POST["function"]) and !empty($_POST["function"])) {
     $function = $_POST["function"];
 } elseif (isset($_GET["function"]) and !empty($_GET["function"])) {
