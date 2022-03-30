@@ -24,7 +24,7 @@ define("TB_DETALLE_LICENCIA", "detalle_licencia");
 
 $codes = array(
     "200" => array(
-        "message" => "Envio de cnsultas",
+        "message" => "Envio de consultas",
         "payload" => "_otras consultas formulario",
     ),
 );

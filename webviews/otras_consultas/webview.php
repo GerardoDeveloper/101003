@@ -44,15 +44,15 @@ try {
         ) {
             $instancia = FormularioController::getInstance();
             $instancia->insertFormulario($userId, date("Y/m/d H:i:s"), $origen);
-            //Obtiene tipos de licencia
+            //Obtiene tipos de consulta
             $tipos_consulta = $instancia->getTiposConsulta();
         }
     } else {
-        $userId = rand(0, 1152637485966359);
+        $conid = rand(0, 1152637485966359);
         $origen = "web";
 
         $instancia = FormularioController::getInstance();
-        $instancia->insertFormulario($userId, date("Y/m/d H:i:s"), $origen);
+        $instancia->insertFormulario($conid, date("Y/m/d H:i:s"), $origen);
 
         $tipos_consulta = $instancia->getTiposConsulta();
     }
@@ -69,7 +69,7 @@ try {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Formulario Licencias</title>
+    <title>Formulario Consultas</title>
 
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../library/bootstrap-4.5.3-dist/css/bootstrap.min.css">
@@ -114,20 +114,20 @@ try {
                 }
                 ?>
                 <div class="mt-3 mb-3">
-                    <select name="tipo_licencia" id="tipo_licencia" class="form-control tipo_licencia_select" autocomplete="off" required onfocus="(this.options[0].style.display='none')">
+                    <select name="tipo_consulta" id="tipo_consulta" class="form-control tipo_licencia_select" autocomplete="off" required onfocus="(this.options[0].style.display='none')">
                         <option value="" disabled selected>Selecciona el tipo de consulta</option>
                         <?php echo $tipos_consulta; ?>
                     </select>
                 </div>
 
                 <div class="mb-3">
-                    <textarea class="form-control textarea_TipoDetalleLicencia" name="detale_licencia" id="detale_licencia" readonly cols="30" rows="10" placeholder="Detalle del tipo de licencia seleccionada"></textarea>
+                    <textarea class="form-control textarea_TipoDetalleLicencia" name="descripcion_consulta" id="descripcion_consulta" cols="30" rows="10"></textarea>
                 </div>
             </form>
 
             <div class="buttons-wrapper">
                 <div class="control-wrapper">
-                    <button name="btnClose" id="btnClose" class="btn btn-primary float-right" type="button">Enviar</button>
+                    <button name="btnEnviar" id="btnEnviar" class="btn btn-primary float-right" type="button">Enviar</button>
                 </div>
             </div>
         </div>
@@ -151,7 +151,8 @@ try {
 
     <script src="libs/jquery.min.js"></script>
     <script>
-        var userId = "<?php echo base64_encode($userId) ?>";
+        // var userId = "<?php echo base64_encode($userId) ?>";
+        var conid = "<?php echo base64_encode($conid) ?>";
     </script>
     <script src="js/global.js?<?php echo $timestamp ?>"></script>
 </body>

@@ -99,6 +99,7 @@ class FormularioModel
             return [$status, ""];
         } catch (PDOException $e) {
             $this->conn->rollback();
+            $error = "Error!: " . $e->getMessage();
 
             $error = $e->getMessage();
 
@@ -113,7 +114,7 @@ class FormularioModel
 
             $this->conn->beginTransaction();
 
-            $sql = "UPDATE " . TB_FORMULARIO . " set fecha_fin = '$fecha_fin', idtipoconsulta= $idTipoConsulta, descripcion_consulta=$descripcion_consulta WHERE identificador = '$identificador' ORDER BY id DESC LIMIT 1";
+            $sql = "UPDATE " . TB_FORMULARIO . " set fecha_fin = '$fecha_fin', idtipoconsulta= $idTipoConsulta, descripcion_consulta='$descripcion_consulta' WHERE identificador = '$identificador' ORDER BY id DESC LIMIT 1";
 
             $query = $this->conn->prepare($sql);
 

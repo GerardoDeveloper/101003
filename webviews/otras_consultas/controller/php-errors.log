@@ -910,3 +910,15 @@
 
 [30-Mar-2022 14:56:52 UTC - User: ]: Code: . Message: 
 
+[30-Mar-2022 18:20:50 UTC - User: ]: Code: 0. Message:  | Error!: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'asdasdadasdas' in 'field list' 
+
+[30-Mar-2022 18:20:50 UTC - User: ]: Code: 0. Message:  | Error!: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'asdasdadasdas' in 'field list' 
+
+[30-Mar-2022 18:22:43 UTC - User: ]: Code: 0. Message:  | Error!: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'asdasdadasdas' in 'field list' 
+
+[30-Mar-2022 18:25:49 UTC - User: MjIyNTQ5MzIyNDkwMzQ2]: Code: 200. Message: Envio de cnsultas
+
+[30-Mar-2022 18:26:20 UTC - User: MjIyNTQ5MzIyNDkwMzQ2]: Code: 200. Message: Envio de cnsultas
+
+[30-Mar-2022 18:27:14 UTC - User: Njc0NjU5MDQxOTI3NTE2]: Code: 200. Message: Envio de cnsultas
+

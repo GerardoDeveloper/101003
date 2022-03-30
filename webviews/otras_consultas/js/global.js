@@ -14,7 +14,7 @@ const toggleFade = (e) => {
 
 //Carga de la pagina.
 document.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('detale_licencia').style.display = 'none';
+    document.getElementById('descripcion_consulta').style.display = 'none';
 
     toggleFade(document.querySelector('.loader'));
 });
@@ -83,8 +83,8 @@ $(".form-control:not(.button)").click(function () {
     }
 });
 
-// Hace una petición al server al hacer cick en cerrarWebview.
-$("#btnClose").on("click", function (event) {
+// Hace una petición al server al hacer cick en enviar.
+$("#btnEnviar").on("click", function (event) {
     event.preventDefault();
 
     if ($("#formData")[0].reportValidity() == false) {
@@ -93,12 +93,13 @@ $("#btnClose").on("click", function (event) {
 
     toggleFade(document.querySelector('.loader'));
 
-    let tipo_lic = $("#tipo_licencia");
-    let opt = tipo_lic[0][tipo_lic[0].selectedIndex].value;
-    let data = new FormData();
+    let tipo_con = document.getElementById('tipo_consulta');
+    let idTipoConsulta = tipo_con.options[tipo_con.selectedIndex].value;
+    let formulario = document.querySelector("#formData");
+    let data = new FormData(formulario);
 
-    data.append("userid", userId);
-    data.append("licencia", opt);
+    data.append("conid", conid);
+    data.append("idTipoConsulta", idTipoConsulta);
     data.append("function", "updateFormulario");
 
     $.ajax({
@@ -120,36 +121,10 @@ $("#btnClose").on("click", function (event) {
     });
 });
 
-$("#tipo_licencia").on("change", function () {
-    toggleFade(document.querySelector('.loader'));
-
-
-    $("#detale_licencia").fadeIn("slow", function () {
+$("#tipo_consulta").on("change", function () {
+    $("#descripcion_consulta").fadeIn("slow", function () {
         $(this).css("display", "block");
     });
 
-    let opt = this.options[this.selectedIndex].value;
-    let data = new FormData($("#formData")[0]);
-    data.append("userid", userId);
-    data.append("licencia", opt);
-    data.append("function", "getDetallesLicencia");
-
-    $.ajax({
-        url: "controller/formulario.controller.php",
-        type: "POST",
-        data: data,
-        contentType: false,
-        cache: false,
-        processData: false,
-        success: function (res) {
-            toggleFade(document.querySelector('.loader'));
-
-            let resData = JSON.parse(res);
-            $("#detale_licencia").text(resData.cantidad_dias + "\n\n" + resData.observaciones);
-        },
-        error: function (e) {
-            console.log("Error Updating");
-            console.log(e);
-        }
-    });
+    $('#descripcion_consulta').val('');
 });

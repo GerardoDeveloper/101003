@@ -111,7 +111,7 @@ function updateFormulario()
     if (isset($_POST["conid"]) and !empty($_POST["conid"]) and
         isset($_POST["idTipoConsulta"]) and !empty($_POST["idTipoConsulta"]) and
         isset($_POST["descripcion_consulta"]) and !empty($_POST["descripcion_consulta"])) {
-        $conid = $_POST["conid"];
+        $conid = base64_decode($_POST["conid"]);
         $idTipoConsulta = intval($_POST["idTipoConsulta"]);
         $descripcion_consulta = $_POST["descripcion_consulta"];
     } else if (isset($_GET["conid"]) and !empty($_GET["conid"]) and
