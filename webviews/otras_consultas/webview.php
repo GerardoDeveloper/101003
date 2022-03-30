@@ -1,14 +1,14 @@
 <?php
 //file_put_contents(__DIR__ . '/prueba.log', print_r($_SERVER, true), FILE_APPEND);
-const IN_PRODUCTION = false; 
+const IN_PRODUCTION = true;
 
 try {
     error_reporting(E_ALL ^ E_NOTICE ^ E_WARNING);
 
     session_start();
 
-    include_once("inc/functions.php");
-    include_once("controller/formulario.controller.php");
+    include_once "inc/functions.php";
+    include_once "controller/formulario.controller.php";
 
     $fecha = new DateTime();
     $timestamp = $fecha->getTimestamp();
@@ -39,7 +39,7 @@ try {
         }
 
         if (($origen == "web" && array_key_exists("HTTP_SEC_FETCH_DEST", $_SERVER)
-                && $_SERVER["HTTP_SEC_FETCH_DEST"] == "iframe")
+            && $_SERVER["HTTP_SEC_FETCH_DEST"] == "iframe")
             || $origen == "facebook"
         ) {
             $instancia = FormularioController::getInstance();
