@@ -1,6 +1,6 @@
 <?php
 //file_put_contents(__DIR__ . '/prueba.log', print_r($_SERVER, true), FILE_APPEND);
-const IN_PRODUCTION = true;
+const IN_PRODUCTION = true; 
 
 try {
     error_reporting(E_ALL ^ E_NOTICE ^ E_WARNING);
