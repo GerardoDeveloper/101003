@@ -63,13 +63,6 @@ class FormularioController
         return $options;
     }
 
-    public function getDetallesLicencia($licencia)
-    {
-        $res = $this->modelInstancia->getDetallesLicencia($licencia);
-        setLog($res[0], $res[1], false);
-        return $res;
-    }
-
     public function insertFormulario($identificador, $fecha_inicio, $origen)
     {
         $res = $this->modelInstancia->insertFormulario($identificador, $fecha_inicio, $origen);
@@ -77,10 +70,19 @@ class FormularioController
         return $res;
     }
 
-    public function updateFormulario($identificador, $fecha_fin, $licencia)
+    /**
+     * actualiza los campos del formulario.
+     *
+     * @param [string] $identificador N° de identificación único que identifica al usuario.
+     * @param [string] $fecha_fin Fecha en que se actualizaron los campos.
+     * @param [integer] $idTipoConsulta Id del tipo de la consulta.
+     * @param [string] $descripcion_consulta Descripción de la consulta.
+     * @return array
+     */
+    public function updateFormulario($identificador, $fecha_fin, $idTipoConsulta, $descripcion_consulta)
     {
-        $res = $this->modelInstancia->updateFormulario($identificador, $fecha_fin, $licencia);
-        setLog($res[0], $res[1], false);
+        $res = $this->modelInstancia->updateFormulario($identificador, $fecha_fin, $idTipoConsulta, $descripcion_consulta);
+        setLog($res[0], $res[1]);
         return $res;
     }
 }
@@ -98,21 +100,6 @@ if ($function != null) {
         case "updateformulario":
             echo updateFormulario();
             break;
-        case "getdetalleslicencia":
-            echo getDetallesLicencia();
-            break;
-    }
-}
-
-function getDetallesLicencia()
-{
-    if (isset($_POST["licencia"]) && !empty($_POST["licencia"])) {
-        $licencia = $_POST["licencia"];
-        $controller = FormularioController::getInstance();
-        $r = $controller->getDetallesLicencia($licencia);
-        return json_encode($r);
-    } else {
-        return false;
     }
 }
 
@@ -121,29 +108,35 @@ function updateFormulario()
     $fecha = new DateTime();
     $timestamp = $fecha->getTimestamp();
 
-    if (isset($_POST["licencia"]) and !empty($_POST["licencia"])) {
-        $licencia = $_POST["licencia"];
-        $userid = base64_decode($_POST["userid"]);
-    } else if (isset($_GET["licencia"]) and !empty($_GET["licencia"])) {
-        $licencia = $_GET["licencia"];
-        $userid = base64_decode($_GET["userid"]);
+    if (isset($_POST["conid"]) and !empty($_POST["conid"]) and
+        isset($_POST["idTipoConsulta"]) and !empty($_POST["idTipoConsulta"]) and
+        isset($_POST["descripcion_consulta"]) and !empty($_POST["descripcion_consulta"])) {
+        $conid = $_POST["conid"];
+        $idTipoConsulta = intval($_POST["idTipoConsulta"]);
+        $descripcion_consulta = $_POST["descripcion_consulta"];
+    } else if (isset($_GET["conid"]) and !empty($_GET["conid"]) and
+        isset($_GET["idTipoConsulta"]) and !empty($_GET["idTipoConsulta"]) and
+        isset($_GET["descripcion_consulta"]) and !empty($_GET["descripcion_consulta"])) {
+        $conid = $_GET["conid"];
+        $idTipoConsulta = intval($_GET["idTipoConsulta"]);
+        $descripcion_consulta = $_GET["descripcion_consulta"];
     } else {
         return 0;
     }
 
     $fecha_fin = date("Y/m/d H:i:s");
     $controller = FormularioController::getInstance();
-    $r = $controller->updateFormulario($userid, $fecha_fin, $licencia);
+    $result = $controller->updateFormulario($conid, $fecha_fin, $idTipoConsulta, $descripcion_consulta);
 
-    if ($r[0] == 1) {
+    if ($result[0] == 1) {
         if (isset($_POST["conid"]) && !empty($_POST["conid"])) {
             $_SESSION["conid"] = $_POST["conid"];
         }
-        setLog(200, $r[1], true);
+        setLog(200, $result[1], true); // Envía la palabra al hilo.
     } else {
-        setLog(0, $r[1]);
+        setLog(0, $result[1]); // Escribe el mensaje de error en los logs.
     }
 
-    return $r[0];
+    return $result[0];
 }
 ?>
