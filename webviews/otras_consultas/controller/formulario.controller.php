@@ -32,6 +32,21 @@
 			return self::$instancia;
 		}
 
+		public function getTiposConsulta()
+		{
+			$res = $this->modelInstancia->getTiposConsulta();
+			$options = "";
+			if(count($res) > 0)
+			{
+				foreach ($res as $key => $value) {
+					$clave = $value["id"];
+					$valor = $value["descripcion"];
+					$options .= "<option value='$clave'>$valor</option>\n";	
+				}
+			}
+			return $options;	
+		}
+
 		public function getTiposLicencia()
 		{
 			$res = $this->modelInstancia->getTiposLicencia();

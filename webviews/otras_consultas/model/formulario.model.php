@@ -33,6 +33,24 @@
 			return self::$instancia;
 		}
 
+		public function getTiposConsulta()
+		{
+			try {
+				$sql = "SELECT * FROM " . TB_TIPO_CONSULTA;
+				$query = $this->conn->prepare($sql);
+
+				if ($query->execute()) {
+					return $query->fetchAll(PDO::FETCH_ASSOC);
+				} else {
+					return [];
+				}
+			} catch (Exception $e) {
+				$error = $e->getMessage();
+				setLog(0, $error, false);
+				return [];
+			}
+		}
+
 		public function getTiposLicencia()
 		{
 			try {
