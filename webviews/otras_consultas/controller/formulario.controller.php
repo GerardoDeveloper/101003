@@ -2,7 +2,7 @@
 <?php
 	error_reporting(E_ALL ^ E_NOTICE ^ E_WARNING);
 
-	$d = "hilos/101003/webviews/licencias";
+	$d = "hilos/101003/webviews/otras_consultas";
 	include_once($_SERVER['DOCUMENT_ROOT'] . "/$d/model/formulario.model.php");
 	include_once($_SERVER['DOCUMENT_ROOT'] . "/$d/inc/functions.php");
 	

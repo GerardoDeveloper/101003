@@ -499,7 +499,56 @@ if ($continuar == true) {
         die();
     }
 
-    
+    if (strtolower($palabra) == "_otras consultas 2") {
+        $keyword = urlencode($palabra);
+        $urlJson1 = "https://labs357.com.ar/witai/Keyword/?cuenta=$cuenta&keyword=$keyword&prefijotabla=cw_";
+        $data = file_get_contents($urlJson1, false, null);
+        $data = str_replace("<PSID>", $sender, $data);
+        $data = str_replace("\\\\\\n", "\\n", $data);
+        $data = json_decode($data, true);
+        $text = $data["message"]["text"];
+        $replies = $data["message"]["quick_replies"];
+
+        $urlformulario = "https://labs357.com.ar/hilos/101003/webviews/otras_consultas/webview.php?userid=$sender&conid=$sender&$timestamp";
+
+        $data = array(
+            "recipient" => array(
+                "id" => $sender,
+            ),
+            "message" => array(
+                "attachment" => array(
+                    "type" => "template",
+                    "payload" => array(
+                        "template_type" => "button",
+                        "text" => $text,
+                        "buttons" => array(
+                            array(
+                                "type" => "web_url",
+                                "url" => $urlformulario,
+                                "fallback_url" => $urlformulario,
+                                "title" => "Hacer consulta",
+                                "webview_height_ratio" => "tall",
+                                "messenger_extensions" => true,
+                                "webview_share_button" => "hide",
+                            ),
+                        ),
+                    ),
+                ),
+                "quick_replies" => $replies,
+            ),
+        );
+
+        setLogDebug("data:");
+        setLogDebug("", $data, true);
+
+        $data = addProperties($data);
+        $data = utf8_converter($data);
+        $jsonData = json_encode($data);
+        $jsonData = normalizeJson($jsonData);
+
+        echo $jsonData;
+        die();
+    }
 
     /**
      * Envio de email.
