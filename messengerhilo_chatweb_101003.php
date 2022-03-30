@@ -19,6 +19,7 @@ $MESSAGE_URL = 'https://tv1.chatbotamerica.com/Home/CallBackPlataformPost';
 
 if ($continuar == true) {
     require_once __DIR__ . "/functions.php";
+    require_once __DIR__ . "/config.php";
 
     setLogDebug("Entro al bot con la palabra: $palabra");
 
@@ -122,6 +123,34 @@ if ($continuar == true) {
 
             $res = $obj->executeSentence($query);
         }
+    }
+
+    if (strtolower($palabra) == "_otras consultas formulario") {
+
+        // $query = "SELECT * FROM " . TABLE_FORMULRIO_OTRAS_CONSULTAS . " WHERE fecha_fin IS NOT NULL AND identificador = '$sender' ORDER BY id DESC LIMIT 1;";
+        // $res = $obj->executeQuery($query);
+
+        // if ($res != null) {
+        //     $ahora = date("Y/m/d H:i:s");
+        //     $date = $res[0]["fecha_fin"];
+        //     $idTipoConsulta = $res[0]["idtipoconsulta"];
+        //     $descripcion_consulta = $res[0]["descripcion_consulta"];
+
+        //     $asunto = "Solicitud de cambio de banco";
+        //     $dest = "administracionch@sancorsalud.com.ar,arasosaguenaga@gmail.com";
+
+        //     $texto = "<b>Empresa:</b> $empresa <br />";
+        //     $texto .= "<b>Apellido/s:</b> $apellidos <br />";
+        //     $texto .= "<b>Nombre/s:</b> $nombres <br />";
+        //     $texto .= "<b>DNI:</b> $dni <br />";
+        //     $texto .= "<b>Banco:</b> <br /> $banco <br />";
+        //     $texto .= "<b>CBU:</b> <br /> $cbu <br />";
+
+        //     $query = "INSERT INTO cd_mails (fecha, enviado, texto, asunto, destinatarios) ";
+        //     $query .= "VALUES ('$ahora', 0, '$texto', '$asunto', '$dest')";
+
+        //     $res = $obj->executeSentence($query);
+        // }
     }
 
     // =======================================Se desabilita junto con las validaciones del DNI=============================
@@ -499,6 +528,9 @@ if ($continuar == true) {
         die();
     }
 
+    /**
+     * Cuando se presiona en la burbuja el botón 'Otras consultas'
+     */
     if (strtolower($palabra) == "_otras consultas 2") {
         $keyword = urlencode($palabra);
         $urlJson1 = "https://labs357.com.ar/witai/Keyword/?cuenta=$cuenta&keyword=$keyword&prefijotabla=cw_";
