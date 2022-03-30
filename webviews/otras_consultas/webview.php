@@ -1,6 +1,6 @@
 <?php
 //file_put_contents(__DIR__ . '/prueba.log', print_r($_SERVER, true), FILE_APPEND);
-const IN_PRODUCTION = true; 
+const IN_PRODUCTION = false; 
 
 try {
     error_reporting(E_ALL ^ E_NOTICE ^ E_WARNING);
@@ -127,7 +127,7 @@ try {
 
             <div class="buttons-wrapper">
                 <div class="control-wrapper">
-                    <button name="btnClose" id="btnClose" class="btn btn-primary float-right" type="button">Cerrar</button>
+                    <button name="btnClose" id="btnClose" class="btn btn-primary float-right" type="button">Enviar</button>
                 </div>
             </div>
         </div>
