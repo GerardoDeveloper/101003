@@ -17,7 +17,7 @@ function setLogDebug($string = "", $data = "", $assoc = false)
             //Imprimirá el texto que se le pase por parámetro en la variable '$string'
             $fecha = date("Y/m/d H:i:s");
             file_put_contents(__DIR__ . "/$fileName", $fecha . "\n\n" . $string . "\n\n", FILE_APPEND);
-        }  else if ($data != "" || $data != null && $assoc) {
+        } else if ($data != "" || $data != null && $assoc) {
             //Imprimirá un arrayAssoc con los datos que tenga '$data', sí la variable '$assoc' es true y
             //la variable '$data' no este vacía o sea nulla.
             $fecha = date("Y/m/d H:i:s");
@@ -89,4 +89,47 @@ function palabraSoloTexto($iden, $texto)
     );
 
     return $data;
+}
+
+/**
+ * Realiza el envío de email.
+ *
+ * @param [string] $name Nombre del usuario logedo.
+ * @param [string] $lastName Apellido del usuario logedo.
+ * @param [string] $legajo N° de legajo del usuario logedo.
+ * @param [array] $arrayResultQuery Array que contendrá los datos del formulario.
+ * @return void
+ */
+function sendEmail($name, $lastName, $legajo, $arrayResultQuery)
+{
+    global $obj;
+    $lengthArrayResultQuery = count($arrayResultQuery);
+
+    if ($lengthArrayResultQuery > 0) {
+        $currentDate = date("Y/m/d H:i:s");
+
+        foreach ($arrayResultQuery as $key => $value) {
+            $fechaFin = date('d/m/Y H:i:s', strtotime($value["fecha_fin"])); // -> Se formatea fecha.
+            $idTipoConsulta = intval($value["idtipoconsulta"]);
+            $descripcion_tipoConsulta = $value["descripcion_tipoConsulta"];
+            $descripcion_consulta = $value["descripcion_consulta"];
+
+            $texto = "<b>Fecha de consulta:</b> $fechaFin <br />";
+            $texto .= "<b>Nombre:</b> $name <br />";
+            $texto .= "<b>Apellido:</b> $lastName <br />";
+            $texto .= "<b>&#8470; de Legajo:</b> $legajo <br />";
+            $texto .= "<b>Descripci&#243;n consulta:</b> $descripcion_consulta";
+
+            // Armamos dinámicamente los Asuntos y los Destinatarios.
+            $tipoConsulta = ARRAY_DESTINATARIOS[$idTipoConsulta];
+            $tipoConsulta["asunto"] = $descripcion_tipoConsulta; // Le asigna el asunto.
+            $asunto = $tipoConsulta["asunto"];
+            $destinatarios = $tipoConsulta["destinatarios"];
+
+            // Insertamos los datos en la tabla cdmails.
+            $query = "INSERT INTO cd_mails (fecha, enviado, texto, asunto, destinatarios) ";
+            $query .= "VALUES ('$currentDate', 0, '$texto', '$asunto', '$destinatarios')";
+            $obj->executeSentence($query);
+        }
+    }
 }

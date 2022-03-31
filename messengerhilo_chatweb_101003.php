@@ -91,37 +91,29 @@ if ($continuar == true) {
         }
     }
 
+    // Palabra que envia el formulario.
     if (strtolower($palabra) == "_otras consultas formulario") {
+        $query = "SELECT
+                    FORM_OC.fecha_fin,
+                    FORM_OC.idtipoconsulta,
+                    TC.descripcion AS descripcion_tipoConsulta,
+                    FORM_OC.descripcion_consulta
+                FROM
+                    " . TABLE_FORMULRIO_OTRAS_CONSULTAS . " AS FORM_OC
+                        LEFT OUTER JOIN
+                    " . TABLE_FORMULRIO_TIPO_CONSULTAS . " AS TC ON FORM_OC.idtipoconsulta = TC.id
+                WHERE
+                    fecha_fin IS NOT NULL
+                        AND identificador = '$sender'
+                ORDER BY FORM_OC.id DESC
+                LIMIT 1;";
 
-        setLogDebug("Entro al if de \"_otras consultas formulario\":");
-        $query = "SELECT * FROM " . TABLE_FORMULRIO_OTRAS_CONSULTAS . " WHERE fecha_fin IS NOT NULL AND identificador = '$sender' ORDER BY id DESC LIMIT 1;";
-        setLogDebug("query: $query");
-        $res = $obj->executeQuery($query);
-
-        setLogDebug("res:");
-        setLogDebug("", $res, true);
-
-        // if ($res != null) {
-        //     $ahora = date("Y/m/d H:i:s");
-        //     $date = $res[0]["fecha_fin"];
-        //     $idTipoConsulta = $res[0]["idtipoconsulta"];
-        //     $descripcion_consulta = $res[0]["descripcion_consulta"];
-
-        //     $asunto = "Solicitud de cambio de banco";
-        //     $dest = "administracionch@sancorsalud.com.ar,arasosaguenaga@gmail.com";
-
-        //     $texto = "<b>Empresa:</b> $empresa <br />";
-        //     $texto .= "<b>Apellido/s:</b> $apellidos <br />";
-        //     $texto .= "<b>Nombre/s:</b> $nombres <br />";
-        //     $texto .= "<b>DNI:</b> $dni <br />";
-        //     $texto .= "<b>Banco:</b> <br /> $banco <br />";
-        //     $texto .= "<b>CBU:</b> <br /> $cbu <br />";
-
-        //     $query = "INSERT INTO cd_mails (fecha, enviado, texto, asunto, destinatarios) ";
-        //     $query .= "VALUES ('$ahora', 0, '$texto', '$asunto', '$dest')";
-
-        //     $res = $obj->executeSentence($query);
-        // }
+        $resultQuery = $obj->executeQuery($query);
+        $user = $obj->getUsuario($sender);
+        $legajo = $user[0]["legajo"];
+        $name = utf8_encode($_nombre_);
+        $lastName = utf8_encode($_apellido_);
+        sendEmail(trim($name), trim($lastName), $legajo, $resultQuery);
     }
 
     if (strtolower($palabra) == "_form enviado 1") {
