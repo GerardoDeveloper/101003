@@ -90,35 +90,43 @@ $("#btnEnviar").on("click", function (event) {
     if ($("#formData")[0].reportValidity() == false) {
         return false;
     }
+    const valueDescripcionConsulta = $("#descripcion_consulta").val();
 
-    toggleFade(document.querySelector('.loader'));
+    if (valueDescripcionConsulta !== "") {
+        toggleFade(document.querySelector('.loader'));
 
-    let tipo_con = document.getElementById('tipo_consulta');
-    let idTipoConsulta = tipo_con.options[tipo_con.selectedIndex].value;
-    let formulario = document.querySelector("#formData");
-    let data = new FormData(formulario);
+        let tipo_con = document.getElementById('tipo_consulta');
+        let idTipoConsulta = tipo_con.options[tipo_con.selectedIndex].value;
+        let formulario = document.querySelector("#formData");
+        let data = new FormData(formulario);
 
-    data.append("conid", conid);
-    data.append("idTipoConsulta", idTipoConsulta);
-    data.append("function", "updateFormulario");
+        data.append("conid", conid);
+        data.append("idTipoConsulta", idTipoConsulta);
+        data.append("function", "updateFormulario");
 
-    $.ajax({
-        url: "controller/formulario.controller.php",
-        type: "POST",
-        data: data,
-        contentType: false,
-        cache: false,
-        processData: false,
-        success: function (res) {
-            toggleFade(document.querySelector('.loader'));
-            cerrarWebview();
-            return;
-        },
-        error: function (e) {
-            console.log("Error Updating");
-            console.log(e);
-        }
-    });
+        $.ajax({
+            url: "controller/formulario.controller.php",
+            type: "POST",
+            data: data,
+            contentType: false,
+            cache: false,
+            processData: false,
+            success: function (res) {
+                toggleFade(document.querySelector('.loader'));
+                cerrarWebview();
+                return;
+            },
+            error: function (e) {
+                console.log("Error Updating");
+                console.log(e);
+            }
+        });
+    } else {
+        const sweetAlert = swal.fire({
+            icon: "warning",
+            text: "La descripción no debe estar vacío, por favor, escriba su consulta",
+        });
+    }
 });
 
 $("#tipo_consulta").on("change", function () {

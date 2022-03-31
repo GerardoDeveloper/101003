@@ -145,6 +145,7 @@ if (isset($_SESSION["conid"])) {
     <script>
         let conid = "<?php echo base64_encode($conId) ?>";
     </script>
+    <script src="../library/SweetAlert2/sweetalert2.all.min.js"></script>
     <script src="js/global.js?<?php echo $timestamp ?>"></script>
 </body>
 

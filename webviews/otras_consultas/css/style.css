@@ -1,41 +1,41 @@
-.btn-primary{
-  border: none;
-  color: #0963AC;
-  background: #F2F2F2;
-  font-family: 'Titillium web', sans-serif !important;
-  box-shadow: 1px 2px 3px 1px rgba(123,118,118,0.6);
-  -webkit-box-shadow: 1px 2px 3px 1px rgba(123,118,118,0.6);
-  -moz-box-shadow: 1px 2px 3px 1px rgba(123,118,118,0.6);
+.btn-primary {
+    border: none;
+    color: #0963AC;
+    background: #F2F2F2;
+    font-family: 'Titillium web', sans-serif !important;
+    box-shadow: 1px 2px 3px 1px rgba(123, 118, 118, 0.6);
+    -webkit-box-shadow: 1px 2px 3px 1px rgba(123, 118, 118, 0.6);
+    -moz-box-shadow: 1px 2px 3px 1px rgba(123, 118, 118, 0.6);
 }
 
-.btn-primary:hover{
-  border: none;
-  background: #A9F756 !important;
-    box-shadow: 1px 2px 3px 1px rgba(123,118,118,0.6);
-    -webkit-box-shadow: 1px 2px 3px 1px rgba(123,118,118,0.6);
-    -moz-box-shadow: 1px 2px 3px 1px rgba(123,118,118,0.6);
+.btn-primary:hover {
+    border: none;
+    background: #A9F756 !important;
+    box-shadow: 1px 2px 3px 1px rgba(123, 118, 118, 0.6);
+    -webkit-box-shadow: 1px 2px 3px 1px rgba(123, 118, 118, 0.6);
+    -moz-box-shadow: 1px 2px 3px 1px rgba(123, 118, 118, 0.6);
 }
 
-.btn-primary:active{
-  border: none;
-  background-color: #d8d8d8 !important;
+.btn-primary:active {
+    border: none;
+    background-color: #d8d8d8 !important;
 }
 
-.tipo_licencia_select{
-  border: 2px solid #A9F756;
-  color: #0963AC;
-  border-radius: 0.6rem;
+.tipo_licencia_select {
+    border: 2px solid #A9F756;
+    color: #0963AC;
+    border-radius: 0.6rem;
 }
 
 
-.textarea_TipoDetalleLicencia{
-  border: 2px solid #A9F756;
-  border-radius: 1.5rem;
-  color: #0963AC;
-  /* sobresribe la clase ".form-control:disabled, .form-control[readonly]" y la propiedad de bootstrap
+.textarea_TipoDetalleLicencia {
+    border: 2px solid #A9F756;
+    border-radius: 1.5rem;
+    color: #0963AC;
+    /* sobresribe la clase ".form-control:disabled, .form-control[readonly]" y la propiedad de bootstrap
      para que el fondo del textarea sea blanco.
   */
-  background-color: #ffffff !important;
+    background-color: #ffffff !important;
 }
 
 /* start_loader */
@@ -159,4 +159,13 @@ div.loader {
         opacity: 0;
     }
 }
+
 /* end_loader */
+
+.swal2-styled.swal2-confirm {
+    border-color: #A9F756 !important;
+}
+
+.swal2-styled:focus {
+    box-shadow: 0 0 0 3px rgb(174 237 165 / 50%) !important;
+}
