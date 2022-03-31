@@ -69,7 +69,7 @@ function setLog($cod_error, $error, $send = false)
         if ($send) {
             $palabra = urlencode($codes[$cod_error]["payload"]);
 
-						// Sí es web
+		    // Sí es web
             if ($_SESSION["conid"]) {
                 $jsonData = file_get_contents("http://labs357.com.ar/messengerhilo_chatweb.php?sender=$userId&numcta=" . LABS_CUENTA . "&palabra=$palabra");
             } else { // Sino es facebook

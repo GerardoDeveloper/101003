@@ -119,7 +119,7 @@ function updateFormulario()
     } else if (isset($_GET["conid"]) and !empty($_GET["conid"]) and
         isset($_GET["idTipoConsulta"]) and !empty($_GET["idTipoConsulta"]) and
         isset($_GET["descripcion_consulta"]) and !empty($_GET["descripcion_consulta"])) {
-        $conid = $_GET["conid"];
+        $conid = base64_decode($_GET["conid"]);
         $idTipoConsulta = intval($_GET["idTipoConsulta"]);
         $descripcion_consulta = $_GET["descripcion_consulta"];
     } else {
@@ -131,8 +131,8 @@ function updateFormulario()
     $result = $controller->updateFormulario($conid, $fecha_fin, $idTipoConsulta, $descripcion_consulta);
 
     if ($result[0] == 1) {
-        if (isset($_POST["conid"]) && !empty($_POST["conid"])) {
-            $_SESSION["conid"] = $_POST["conid"];
+        if (isset($conid) && !empty($conid)) {
+            $_SESSION["conid"] = $conid;
         }
         setLog(200, $result[1], true); // Envía la palabra al hilo.
     } else {

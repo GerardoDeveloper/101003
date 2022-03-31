@@ -91,6 +91,39 @@ if ($continuar == true) {
         }
     }
 
+    if (strtolower($palabra) == "_otras consultas formulario") {
+
+        setLogDebug("Entro al if de \"_otras consultas formulario\":");
+        $query = "SELECT * FROM " . TABLE_FORMULRIO_OTRAS_CONSULTAS . " WHERE fecha_fin IS NOT NULL AND identificador = '$sender' ORDER BY id DESC LIMIT 1;";
+        setLogDebug("query: $query");
+        $res = $obj->executeQuery($query);
+
+        setLogDebug("res:");
+        setLogDebug("", $res, true);
+
+        // if ($res != null) {
+        //     $ahora = date("Y/m/d H:i:s");
+        //     $date = $res[0]["fecha_fin"];
+        //     $idTipoConsulta = $res[0]["idtipoconsulta"];
+        //     $descripcion_consulta = $res[0]["descripcion_consulta"];
+
+        //     $asunto = "Solicitud de cambio de banco";
+        //     $dest = "administracionch@sancorsalud.com.ar,arasosaguenaga@gmail.com";
+
+        //     $texto = "<b>Empresa:</b> $empresa <br />";
+        //     $texto .= "<b>Apellido/s:</b> $apellidos <br />";
+        //     $texto .= "<b>Nombre/s:</b> $nombres <br />";
+        //     $texto .= "<b>DNI:</b> $dni <br />";
+        //     $texto .= "<b>Banco:</b> <br /> $banco <br />";
+        //     $texto .= "<b>CBU:</b> <br /> $cbu <br />";
+
+        //     $query = "INSERT INTO cd_mails (fecha, enviado, texto, asunto, destinatarios) ";
+        //     $query .= "VALUES ('$ahora', 0, '$texto', '$asunto', '$dest')";
+
+        //     $res = $obj->executeSentence($query);
+        // }
+    }
+
     if (strtolower($palabra) == "_form enviado 1") {
         $_nombre_ = utf8_encode($_nombre_);
         $_apellido_ = utf8_encode($_apellido_);
@@ -123,34 +156,6 @@ if ($continuar == true) {
 
             $res = $obj->executeSentence($query);
         }
-    }
-
-    if (strtolower($palabra) == "_otras consultas formulario") {
-
-        // $query = "SELECT * FROM " . TABLE_FORMULRIO_OTRAS_CONSULTAS . " WHERE fecha_fin IS NOT NULL AND identificador = '$sender' ORDER BY id DESC LIMIT 1;";
-        // $res = $obj->executeQuery($query);
-
-        // if ($res != null) {
-        //     $ahora = date("Y/m/d H:i:s");
-        //     $date = $res[0]["fecha_fin"];
-        //     $idTipoConsulta = $res[0]["idtipoconsulta"];
-        //     $descripcion_consulta = $res[0]["descripcion_consulta"];
-
-        //     $asunto = "Solicitud de cambio de banco";
-        //     $dest = "administracionch@sancorsalud.com.ar,arasosaguenaga@gmail.com";
-
-        //     $texto = "<b>Empresa:</b> $empresa <br />";
-        //     $texto .= "<b>Apellido/s:</b> $apellidos <br />";
-        //     $texto .= "<b>Nombre/s:</b> $nombres <br />";
-        //     $texto .= "<b>DNI:</b> $dni <br />";
-        //     $texto .= "<b>Banco:</b> <br /> $banco <br />";
-        //     $texto .= "<b>CBU:</b> <br /> $cbu <br />";
-
-        //     $query = "INSERT INTO cd_mails (fecha, enviado, texto, asunto, destinatarios) ";
-        //     $query .= "VALUES ('$ahora', 0, '$texto', '$asunto', '$dest')";
-
-        //     $res = $obj->executeSentence($query);
-        // }
     }
 
     // =======================================Se desabilita junto con las validaciones del DNI=============================
@@ -539,6 +544,7 @@ if ($continuar == true) {
         $data = str_replace("\\\\\\n", "\\n", $data);
         $data = json_decode($data, true);
         $text = $data["message"]["text"];
+        $textButton = "Hacer consulta";
         $replies = $data["message"]["quick_replies"];
 
         $urlformulario = FORM_OTRAS_CONSULTAS . "?userid=$sender&conid=$sender&$timestamp";
@@ -558,7 +564,7 @@ if ($continuar == true) {
                                 "type" => "web_url",
                                 "url" => $urlformulario,
                                 "fallback_url" => $urlformulario,
-                                "title" => "Hacer consulta",
+                                "title" => $textButton,
                                 "webview_height_ratio" => "tall",
                                 "messenger_extensions" => true,
                                 "webview_share_button" => "hide",
@@ -569,9 +575,6 @@ if ($continuar == true) {
                 "quick_replies" => $replies,
             ),
         );
-
-        setLogDebug("data:");
-        setLogDebug("", $data, true);
 
         $data = addProperties($data);
         $data = utf8_converter($data);
