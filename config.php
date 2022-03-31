@@ -14,3 +14,6 @@ const ARRAY_TIPO_CONSULTAS = array(
 
 //============================TABLAS SQL================================
 define("TABLE_FORMULRIO_OTRAS_CONSULTAS", "formulario_otras_consultas");
+
+//==========================URLs FORMULARIOS============================
+define("FORM_OTRAS_CONSULTAS", "https://labs357.com.ar/hilos/101003/webviews/otras_consultas/webview.php");

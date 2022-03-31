@@ -541,7 +541,7 @@ if ($continuar == true) {
         $text = $data["message"]["text"];
         $replies = $data["message"]["quick_replies"];
 
-        $urlformulario = "https://labs357.com.ar/hilos/101003/webviews/otras_consultas/webview.php?userid=$sender&conid=$sender&$timestamp";
+        $urlformulario = FORM_OTRAS_CONSULTAS . "?userid=$sender&conid=$sender&$timestamp";
 
         $data = array(
             "recipient" => array(
