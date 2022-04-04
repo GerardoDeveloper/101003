@@ -133,3 +133,42 @@ function sendEmail($name, $lastName, $legajo, $arrayResultQuery)
         }
     }
 }
+
+/**
+ * Realiza el envío de email cuando se consulta en el botón 'Otras consultas sobre licencias'.
+ *
+ * @param [string] $name Nombre del usuario logedo.
+ * @param [string] $lastName Apellido del usuario logedo.
+ * @param [string] $legajo N° de legajo del usuario logedo.
+ * @param [array] $arrayResultQuery Array que contendrá los datos del formulario.
+ * @return void
+ */
+function sendEmailSobreLicencias($name, $lastName, $legajo, $arrayResultQuery)
+{
+    global $obj;
+    $lengthArrayResultQuery = count($arrayResultQuery);
+
+    if ($lengthArrayResultQuery > 0) {
+        $currentDate = date("Y/m/d H:i:s");
+
+        foreach ($arrayResultQuery as $key => $value) {
+            $fechaFin = date('d/m/Y H:i:s', strtotime($value["fecha_fin"])); // -> Se formatea fecha.
+            $descripcion_consulta = $value["descripcion_consulta"];
+
+            $texto = "<b>Fecha de consulta:</b> $fechaFin <br />";
+            $texto .= "<b>Nombre:</b> $name <br />";
+            $texto .= "<b>Apellido:</b> $lastName <br />";
+            $texto .= "<b>&#8470; de Legajo:</b> $legajo <br />";
+            $texto .= "<b>Descripci&#243;n consulta:</b> $descripcion_consulta";
+
+            // Armamos dinámicamente los Asuntos y los Destinatarios.
+            $destinatarios = ARRAY_DESTINATARIOS_OTRAS_CONSULTAS_SOBRE_LICENCIAS["destinatarios"];
+            $asunto = ARRAY_DESTINATARIOS_OTRAS_CONSULTAS_SOBRE_LICENCIAS["asunto"];
+
+            // Insertamos los datos en la tabla cdmails.
+            $query = "INSERT INTO " . TABLE_CD_EMAIL . " (fecha, enviado, texto, asunto, destinatarios) ";
+            $query .= "VALUES ('$currentDate', 0, '$texto', '$asunto', '$destinatarios')";
+            $obj->executeSentence($query);
+        }
+    }
+}

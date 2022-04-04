@@ -91,7 +91,7 @@ if ($continuar == true) {
         }
     }
 
-    // Palabra que envia el formulario.
+    // Palabra que envia el formulario 'Otras consultas'.
     if (strtolower($palabra) == "_otras consultas formulario") {
         $query = "SELECT
                     FORM_OC.fecha_fin,
@@ -129,6 +129,58 @@ if ($continuar == true) {
 
         sendToMessenger($token, $jsonData);
         sleep(0.25);
+
+        // Llamamos a la siguiente palabra.
+        $palabra = "_tambien puedo";
+        $keyword = urlencode($palabra);
+        $urlJson1 = "https://labs357.com.ar/witai/Keyword/?cuenta=$cuenta&keyword=$keyword&prefijotabla=cw_";
+        $data = file_get_contents($urlJson1, false, null);
+        $data = str_replace("<PSID>", $sender, $data);
+        $data = str_replace("\\\\n", "\n", $data);
+        $data = json_decode($data, true);
+
+        $data = addProperties($data);
+        $data = utf8_converter($data);
+        $jsonData = json_encode($data);
+        $jsonData = normalizeJson($jsonData);
+
+        echo $jsonData;
+        die();
+    }
+
+    // Palabra que envia el formulario 'Otras consultas sobre licencias'.
+    if (strtolower($palabra) == "_otras consultas sobre licencias formulario") {
+        $query = "SELECT
+                    *
+                FROM
+                    " . TABLE_FORMULRIO_OTRAS_CONSULTAS_SOBRE_LICENCIAS . "
+                WHERE
+                    fecha_fin IS NOT NULL
+                        AND identificador = '$sender'
+                ORDER BY id DESC
+                LIMIT 1;";
+
+        $resultQuery = $obj->executeQuery($query);
+        $user = $obj->getUsuario($sender);
+        $legajo = $user[0]["legajo"];
+        $name = utf8_encode($_nombre_);
+        $lastName = utf8_encode($_apellido_);
+        sendEmailSobreLicencias(trim($name), trim($lastName), $legajo, $resultQuery);
+
+        $keyword = urlencode($palabra);
+        $urlJson1 = "https://labs357.com.ar/witai/Keyword/?cuenta=$cuenta&keyword=$keyword&prefijotabla=cw_";
+        $data = file_get_contents($urlJson1, false, null);
+        $data = str_replace("<PSID>", $sender, $data);
+        $data = str_replace("\\\\n", "\n", $data);
+        $data = json_decode($data, true);
+
+        $data = addProperties($data);
+        $data = utf8_converter($data);
+        $jsonData = json_encode($data);
+        $jsonData = normalizeJson($jsonData);
+
+        sendToMessenger($token, $jsonData);
+        sleep(1);
 
         // Llamamos a la siguiente palabra.
         $palabra = "_tambien puedo";
@@ -572,6 +624,58 @@ if ($continuar == true) {
         $replies = $data["message"]["quick_replies"];
 
         $urlformulario = FORM_OTRAS_CONSULTAS . "?userid=$sender&conid=$sender&$timestamp";
+
+        $data = array(
+            "recipient" => array(
+                "id" => $sender,
+            ),
+            "message" => array(
+                "attachment" => array(
+                    "type" => "template",
+                    "payload" => array(
+                        "template_type" => "button",
+                        "text" => $text,
+                        "buttons" => array(
+                            array(
+                                "type" => "web_url",
+                                "url" => $urlformulario,
+                                "fallback_url" => $urlformulario,
+                                "title" => $textButton,
+                                "webview_height_ratio" => "tall",
+                                "messenger_extensions" => true,
+                                "webview_share_button" => "hide",
+                            ),
+                        ),
+                    ),
+                ),
+                "quick_replies" => $replies,
+            ),
+        );
+
+        $data = addProperties($data);
+        $data = utf8_converter($data);
+        $jsonData = json_encode($data);
+        $jsonData = normalizeJson($jsonData);
+
+        echo $jsonData;
+        die();
+    }
+
+    /**
+     * Cuando se presiona en la burbuja el botón 'Otras consultas sobe licencias'
+     */
+    if (strtolower($palabra) == "_otras consultas sobre licencias") {
+        $keyword = urlencode($palabra);
+        $urlJson1 = "https://labs357.com.ar/witai/Keyword/?cuenta=$cuenta&keyword=$keyword&prefijotabla=cw_";
+        $data = file_get_contents($urlJson1, false, null);
+        $data = str_replace("<PSID>", $sender, $data);
+        $data = str_replace("\\\\\\n", "\\n", $data);
+        $data = json_decode($data, true);
+        $text = $data["message"]["text"];
+        $textButton = "Hacer consulta";
+        $replies = $data["message"]["quick_replies"];
+
+        $urlformulario = FORM_OTRAS_CONSULTAS_SOBRE_LICENCIAS . "?userid=$sender&conid=$sender&$timestamp";
 
         $data = array(
             "recipient" => array(
