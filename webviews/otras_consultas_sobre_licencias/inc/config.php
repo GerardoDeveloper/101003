@@ -17,15 +17,12 @@ define("LABS_CUENTA", "101003");
 
 define("FB_TOKEN", "");
 
-define("TB_FORMULARIO", "formulario_otras_consultas");
-define("TB_TIPO_CONSULTA", "tipo_consultas");
-define("TB_TIPO_LICENCIA", "tipo_licencia");
-define("TB_DETALLE_LICENCIA", "detalle_licencia");
+define("TB_FORMULARIO", "formulario_otras_consultas_sobre_licencias");
 
 $codes = array(
     "200" => array(
-        "message" => "Envio de consultas",
-        "payload" => "_otras consultas formulario",
+        "message" => "Envio de consultas sobre licencias",
+        "payload" => "_otras consultas sobre licencias formulario",
     ),
 );
 define("STATES_CODES", json_encode($codes));

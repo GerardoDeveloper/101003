@@ -119,15 +119,7 @@ $("#btnEnviar").on("click", function (event) {
     } else {
         const sweetAlert = swal.fire({
             icon: "warning",
-            text: "La descripción no debe estar vacío, por favor, escriba su consulta",
+            text: "La descripción de la consulta no debe estar vacío, por favor, escriba su consulta",
         });
     }
-});
-
-$("#tipo_consulta").on("change", function () {
-    $("#descripcion_consulta").fadeIn("slow", function () {
-        $(this).css("display", "block");
-    });
-
-    $('#descripcion_consulta').val('');
 });

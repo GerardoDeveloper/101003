@@ -34,35 +34,6 @@ class FormularioController
         return self::$instancia;
     }
 
-    public function getTiposConsulta()
-    {
-        $res = $this->modelInstancia->getTiposConsulta();
-        $options = "";
-
-        if (count($res) > 0) {
-            foreach ($res as $key => $value) {
-                $id = $value["id"];
-                $descripcion = $value["descripcion"];
-                $options .= "<option value='$id'>$descripcion</option>\n";
-            }
-        }
-        return $options;
-    }
-
-    public function getTiposLicencia()
-    {
-        $res = $this->modelInstancia->getTiposLicencia();
-        $options = "";
-        if (count($res) > 0) {
-            foreach ($res as $key => $value) {
-                $clave = $value["id"];
-                $valor = $value["descripcion"];
-                $options .= "<option value='$clave'>$valor</option>\n";
-            }
-        }
-        return $options;
-    }
-
     public function insertFormulario($identificador, $fecha_inicio, $origen)
     {
         $res = $this->modelInstancia->insertFormulario($identificador, $fecha_inicio, $origen);
@@ -79,9 +50,9 @@ class FormularioController
      * @param [string] $descripcion_consulta Descripción de la consulta.
      * @return array
      */
-    public function updateFormulario($identificador, $fecha_fin, $idTipoConsulta, $descripcion_consulta)
+    public function updateFormulario($identificador, $fecha_fin, $descripcion_consulta)
     {
-        $res = $this->modelInstancia->updateFormulario($identificador, $fecha_fin, $idTipoConsulta, $descripcion_consulta);
+        $res = $this->modelInstancia->updateFormulario($identificador, $fecha_fin, $descripcion_consulta);
         setLog($res[0], $res[1]);
         return $res;
     }
@@ -111,16 +82,12 @@ function updateFormulario()
     $timestamp = $fecha->getTimestamp();
 
     if (isset($_POST["conid"]) and !empty($_POST["conid"]) and
-        isset($_POST["idTipoConsulta"]) and !empty($_POST["idTipoConsulta"]) and
         isset($_POST["descripcion_consulta"]) and !empty($_POST["descripcion_consulta"])) {
         $conid = base64_decode($_POST["conid"]);
-        $idTipoConsulta = intval($_POST["idTipoConsulta"]);
         $descripcion_consulta = $_POST["descripcion_consulta"];
     } else if (isset($_GET["conid"]) and !empty($_GET["conid"]) and
-        isset($_GET["idTipoConsulta"]) and !empty($_GET["idTipoConsulta"]) and
         isset($_GET["descripcion_consulta"]) and !empty($_GET["descripcion_consulta"])) {
         $conid = base64_decode($_GET["conid"]);
-        $idTipoConsulta = intval($_GET["idTipoConsulta"]);
         $descripcion_consulta = $_GET["descripcion_consulta"];
     } else {
         return 0;
@@ -128,7 +95,7 @@ function updateFormulario()
 
     $fecha_fin = date("Y/m/d H:i:s");
     $controller = FormularioController::getInstance();
-    $result = $controller->updateFormulario($conid, $fecha_fin, $idTipoConsulta, $descripcion_consulta);
+    $result = $controller->updateFormulario($conid, $fecha_fin, $descripcion_consulta);
 
     if ($result[0] == 1) {
         if (isset($conid) && !empty($conid)) {

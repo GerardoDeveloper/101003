@@ -47,17 +47,13 @@ try {
         ) {
             $instancia = FormularioController::getInstance();
             $instancia->insertFormulario($userId, date("Y/m/d H:i:s"), $origen);
-            //Obtiene tipos de consulta
-            $tipos_consulta = $instancia->getTiposConsulta();
         }
     } else {
-        $conid = rand(0, 1152637485966359);
+        $conId = rand(0, 1152637485966359);
         $origen = "web";
 
         $instancia = FormularioController::getInstance();
-        $instancia->insertFormulario($conid, date("Y/m/d H:i:s"), $origen);
-
-        $tipos_consulta = $instancia->getTiposConsulta();
+        $instancia->insertFormulario($conId, date("Y/m/d H:i:s"), $origen);
     }
 } catch (Exception $e) {
     $error = $e->getMessage();
@@ -109,18 +105,18 @@ if (isset($_SESSION["conid"])) {
         <div class="content-wrapper">
             <form id="formData" class="form-wrapper">
                 <?php
-                unset($_SESSION["conid"]);
+unset($_SESSION["conid"]);
 
-                if (isset($_GET["conid"]) && !empty($_GET["conid"])) {
-                    $_SESSION["conid"] = $_GET["conid"];
-                } else if (isset($_POST["conid"]) && !empty($_POST["conid"])) {
-                    $_SESSION["conid"] = $_POST["conid"];
-                }
+if (isset($_GET["conid"]) && !empty($_GET["conid"])) {
+    $_SESSION["conid"] = $_GET["conid"];
+} else if (isset($_POST["conid"]) && !empty($_POST["conid"])) {
+    $_SESSION["conid"] = $_POST["conid"];
+}
 
-                if ($_SESSION["conid"]) {
-                    echo '<input type="hidden" name="conid" id="conid" value="' . $_SESSION["conid"] . '" data-value="' . $_SESSION["conid"] . '" />';
-                }
-                ?>
+if ($_SESSION["conid"]) {
+    echo '<input type="hidden" name="conid" id="conid" value="' . $_SESSION["conid"] . '" data-value="' . $_SESSION["conid"] . '" />';
+}
+?>
                 <div class="mt-3 mb-3">
                     <textarea class="form-control textarea_TipoDetalleLicencia" name="descripcion_consulta" id="descripcion_consulta" cols="30" rows="10"></textarea>
                 </div>

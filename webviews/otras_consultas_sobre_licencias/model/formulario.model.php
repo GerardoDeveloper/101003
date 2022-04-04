@@ -37,42 +37,6 @@ class FormularioModel
         return self::$instancia;
     }
 
-    public function getTiposConsulta()
-    {
-        try {
-            $sql = "SELECT * FROM " . TB_TIPO_CONSULTA;
-            $query = $this->conn->prepare($sql);
-
-            if ($query->execute()) {
-                return $query->fetchAll(PDO::FETCH_ASSOC);
-            } else {
-                return [];
-            }
-        } catch (Exception $e) {
-            $error = $e->getMessage();
-            setLog(0, $error, false);
-            return [];
-        }
-    }
-
-    public function getTiposLicencia()
-    {
-        try {
-            $sql = "SELECT * FROM " . TB_TIPO_LICENCIA;
-            $query = $this->conn->prepare($sql);
-
-            if ($query->execute()) {
-                return $query->fetchAll(PDO::FETCH_ASSOC);
-            } else {
-                return [];
-            }
-        } catch (Exception $e) {
-            $error = $e->getMessage();
-            setLog(0, $error, false);
-            return [];
-        }
-    }
-
     public function insertFormulario($identificador, $fecha_inicio, $origen)
     {
         try {
@@ -107,14 +71,14 @@ class FormularioModel
         }
     }
 
-    public function updateFormulario($identificador, $fecha_fin, $idTipoConsulta, $descripcion_consulta)
+    public function updateFormulario($identificador, $fecha_fin, $descripcion_consulta)
     {
         try {
             $this->conn->setAttribute();
 
             $this->conn->beginTransaction();
 
-            $sql = "UPDATE " . TB_FORMULARIO . " set fecha_fin = '$fecha_fin', idtipoconsulta= $idTipoConsulta, descripcion_consulta='$descripcion_consulta' WHERE identificador = '$identificador' ORDER BY id DESC LIMIT 1";
+            $sql = "UPDATE " . TB_FORMULARIO . " set fecha_fin = '$fecha_fin', descripcion_consulta='$descripcion_consulta' WHERE identificador = '$identificador' ORDER BY id DESC LIMIT 1";
 
             $query = $this->conn->prepare($sql);
 
