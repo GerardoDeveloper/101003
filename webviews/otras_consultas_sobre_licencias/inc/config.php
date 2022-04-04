@@ -1,5 +1,5 @@
 <?php
-const IN_PRODUCTION = true;
+const IN_PRODUCTION = false;
 
 if (IN_PRODUCTION) {
     define("DB_HOST", "127.0.0.1");

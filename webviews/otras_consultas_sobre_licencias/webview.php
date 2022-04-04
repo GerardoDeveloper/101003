@@ -1,6 +1,6 @@
 <?php
 //file_put_contents(__DIR__ . '/prueba.log', print_r($_SERVER, true), FILE_APPEND);
-const IN_PRODUCTION = true;
+const IN_PRODUCTION = false;
 
 try {
     error_reporting(E_ALL ^ E_NOTICE ^ E_WARNING);
@@ -122,13 +122,6 @@ if (isset($_SESSION["conid"])) {
                 }
                 ?>
                 <div class="mt-3 mb-3">
-                    <select name="tipo_consulta" id="tipo_consulta" class="form-control tipo_licencia_select" autocomplete="off" required onfocus="(this.options[0].style.display='none')">
-                        <option value="" disabled selected>Selecciona el tipo de consulta</option>
-                        <?php echo $tipos_consulta; ?>
-                    </select>
-                </div>
-
-                <div class="mb-3">
                     <textarea class="form-control textarea_TipoDetalleLicencia" name="descripcion_consulta" id="descripcion_consulta" cols="30" rows="10"></textarea>
                 </div>
             </form>

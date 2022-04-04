@@ -14,8 +14,6 @@ const toggleFade = (e) => {
 
 //Carga de la pagina.
 document.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('descripcion_consulta').style.display = 'none';
-
     toggleFade(document.querySelector('.loader'));
 });
 
@@ -95,13 +93,10 @@ $("#btnEnviar").on("click", function (event) {
     if (valueDescripcionConsulta !== "") {
         toggleFade(document.querySelector('.loader'));
 
-        let tipo_con = document.getElementById('tipo_consulta');
-        let idTipoConsulta = tipo_con.options[tipo_con.selectedIndex].value;
         let formulario = document.querySelector("#formData");
         let data = new FormData(formulario);
 
         data.append("conid", conid);
-        data.append("idTipoConsulta", idTipoConsulta);
         data.append("function", "updateFormulario");
 
         $.ajax({
