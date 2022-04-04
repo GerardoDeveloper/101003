@@ -113,7 +113,39 @@ if ($continuar == true) {
         $legajo = $user[0]["legajo"];
         $name = utf8_encode($_nombre_);
         $lastName = utf8_encode($_apellido_);
-        sendEmail(trim($name), trim($lastName), $legajo, $resultQuery);
+        // sendEmail(trim($name), trim($lastName), $legajo, $resultQuery);
+
+        $keyword = urlencode($palabra);
+        $urlJson1 = "https://labs357.com.ar/witai/Keyword/?cuenta=$cuenta&keyword=$keyword&prefijotabla=cw_";
+        $data = file_get_contents($urlJson1, false, null);
+        $data = str_replace("<PSID>", $sender, $data);
+        $data = str_replace("\\\\n", "\n", $data);
+        $data = json_decode($data, true);
+
+        $data = addProperties($data);
+        $data = utf8_converter($data);
+        $jsonData = json_encode($data);
+        $jsonData = normalizeJson($jsonData);
+
+        sendToMessenger($token, $jsonData);
+        sleep(0.25);
+
+        // Llamamos a la siguiente palabra.
+        $palabra = "_tambien puedo";
+        $keyword = urlencode($palabra);
+        $urlJson1 = "https://labs357.com.ar/witai/Keyword/?cuenta=$cuenta&keyword=$keyword&prefijotabla=cw_";
+        $data = file_get_contents($urlJson1, false, null);
+        $data = str_replace("<PSID>", $sender, $data);
+        $data = str_replace("\\\\n", "\n", $data);
+        $data = json_decode($data, true);
+
+        $data = addProperties($data);
+        $data = utf8_converter($data);
+        $jsonData = json_encode($data);
+        $jsonData = normalizeJson($jsonData);
+
+        echo $jsonData;
+        die();
     }
 
     if (strtolower($palabra) == "_form enviado 1") {
