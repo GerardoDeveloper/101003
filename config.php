@@ -12,34 +12,34 @@ const ARRAY_DESTINATARIOS = array(
     1 => array(
         // Liquidación de sueldos / Impuesto a las ganancias
         "asunto" => "",
-        "destinatarios" => "liquidacionch@sancorsalud.com.ar,arasosaguenaga@gmail.com, control@labs357.com",
+        "destinatarios" => "liquidacionch@sancorsalud.com.ar, control@labs357.com",
     ),
     2 => array(
         // Envío o solicitud de documentación / Consultas por fichadas
         "asunto" => "",
-        "destinatarios" => "administracionch@sancorsalud.com.ar,arasosaguenaga@gmail.com, control@labs357.com",
+        "destinatarios" => "administracionch@sancorsalud.com.ar, control@labs357.com",
     ),
     3 => array(
         // Beneficios / Privilege
         "asunto" => "",
-        "destinatarios" => "privilege@sancorsalud.com.ar,arasosaguenaga@gmail.com, control@labs357.com",
+        "destinatarios" => "privilege@sancorsalud.com.ar, control@labs357.com",
     ),
     4 => array(
         // UNI
         "asunto" => "",
-        "destinatarios" => "uni@sancorsalud.com.ar,arasosaguenaga@gmail.com, control@labs357.com",
+        "destinatarios" => "uni@sancorsalud.com.ar, control@labs357.com",
     ),
     5 => array(
         // Programas de desarrollo/Desempeño
         "asunto" => "",
-        "destinatarios" => "desarrolloch@sancorsalud.com.ar,arasosaguenaga@gmail.com, control@labs357.com",
+        "destinatarios" => "desarrolloch@sancorsalud.com.ar, control@labs357.com",
     ),
 );
 
 // Este array contiene todos los destinatarios del botón 'Otras consultas sobre licencias'
 const ARRAY_DESTINATARIOS_OTRAS_CONSULTAS_SOBRE_LICENCIAS = array(
     "asunto" => "Otras consultas sobre licencias",
-    "destinatarios" => "administracionch@sancorsalud.com.ar,arasosaguenaga@gmail.com, control@labs357.com",
+    "destinatarios" => "administracionch@sancorsalud.com.ar, control@labs357.com",
 );
 
 //============================TABLAS SQL================================
