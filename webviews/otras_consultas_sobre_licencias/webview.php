@@ -118,7 +118,7 @@ if ($_SESSION["conid"]) {
 }
 ?>
                 <div class="mt-3 mb-3">
-                    <textarea class="form-control textarea_TipoDetalleLicencia" name="descripcion_consulta" id="descripcion_consulta" cols="30" rows="10"></textarea>
+                    <textarea class="form-control textarea_TipoDetalleLicencia" name="descripcion_consulta" id="descripcion_consulta" cols="30" rows="10" placeholder="Escribe brevemente tu consulta..."></textarea>
                 </div>
             </form>
 

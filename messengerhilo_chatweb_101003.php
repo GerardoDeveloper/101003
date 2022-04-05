@@ -21,7 +21,7 @@ if ($continuar == true) {
     require_once __DIR__ . "/functions.php";
     require_once __DIR__ . "/config.php";
 
-    setLogDebug("Entro al bot con la palabra: $palabra");
+    // setLogDebug("Entro al bot con la palabra: $palabra");
 
     $mailKeywords = array(
         "_derivar banco" => array(
@@ -113,7 +113,7 @@ if ($continuar == true) {
         $legajo = $user[0]["legajo"];
         $name = utf8_encode($_nombre_);
         $lastName = utf8_encode($_apellido_);
-        // sendEmail(trim($name), trim($lastName), $legajo, $resultQuery);
+        sendEmail(trim($name), trim($lastName), $legajo, $resultQuery);
 
         $keyword = urlencode($palabra);
         $urlJson1 = "https://labs357.com.ar/witai/Keyword/?cuenta=$cuenta&keyword=$keyword&prefijotabla=cw_";

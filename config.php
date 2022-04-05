@@ -39,8 +39,7 @@ const ARRAY_DESTINATARIOS = array(
 // Este array contiene todos los destinatarios del botón 'Otras consultas sobre licencias'
 const ARRAY_DESTINATARIOS_OTRAS_CONSULTAS_SOBRE_LICENCIAS = array(
     "asunto" => "Otras consultas sobre licencias",
-    // "destinatarios" => "administracionch@sancorsalud.com.ar,arasosaguenaga@gmail.com, control@labs357.com",
-    "destinatarios" => "control@labs357.com",
+    "destinatarios" => "administracionch@sancorsalud.com.ar,arasosaguenaga@gmail.com, control@labs357.com",
 );
 
 //============================TABLAS SQL================================
