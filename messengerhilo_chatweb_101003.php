@@ -26,23 +26,23 @@ if ($continuar == true) {
     $mailKeywords = array(
         "_derivar banco" => array(
             "asunto" => "¿En qué banco se abrió mi cuenta?",
-            "destinatarios" => "administracionch@sancorsalud.com.ar,arasosaguenaga@gmail.com",
+            "destinatarios" => "administracionch@sancorsalud.com.ar,arasosaguenaga@gmail.com, control@labs357.com",
         ),
         "_ingreso" => array(
             "asunto" => "Problemas en el Ingreso a Plataforma",
-            "destinatarios" => "administracionch@sancorsalud.com.ar,arasosaguenaga@gmail.com",
+            "destinatarios" => "administracionch@sancorsalud.com.ar,arasosaguenaga@gmail.com, control@labs357.com",
         ),
         "_visualizacion enviado" => array(
             "asunto" => "Puede acceder, pero no ve el recibo",
-            "destinatarios" => "administracionch@sancorsalud.com.ar,arasosaguenaga@gmail.com",
+            "destinatarios" => "administracionch@sancorsalud.com.ar,arasosaguenaga@gmail.com, control@labs357.com",
         ),
         "_restablecer enviado" => array(
             "asunto" => "Restablecer contraseña de turecibo.com",
-            "destinatarios" => "administracionch@sancorsalud.com.ar,arasosaguenaga@gmail.com",
+            "destinatarios" => "administracionch@sancorsalud.com.ar,arasosaguenaga@gmail.com, control@labs357.com",
         ),
         "_alta obra social" => array(
             "asunto" => "Alta - Plan de Salud",
-            "destinatarios" => "administracionch@sancorsalud.com.ar,eugenia.armando@sancorsalud.com.ar,arasosaguenaga@gmail.com",
+            "destinatarios" => "eugenia.armando@sancorsalud.com.ar,arasosaguenaga@gmail.com, control@labs357.com",
         ),
     );
 
