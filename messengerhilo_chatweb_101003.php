@@ -68,7 +68,7 @@ if ($continuar == true) {
         if (in_array($ultimosDos[1]["mensaje"], $palabrasLegajo)) {
             $dni = utf8_encode($palabra);
 
-            $query = "SELECT * FROM nomina_dni WHERE dni  = '$dni' ORDER BY id DESC LIMIT 1";
+            $query = "SELECT * FROM nomina_dni WHERE dni = '$dni' AND isEnabled = 1 ORDER BY id DESC LIMIT 1";
             $res = $obj->executeQuery($query);
 
             // Sí la consulta trae resultados.
