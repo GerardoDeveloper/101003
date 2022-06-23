@@ -256,3 +256,87 @@ Set log en true Array
     [userid] => ZmE0ODk5YjMtZDMzMy00MTU0LTk2OTAtMGE4NDcwNmE4NDAz
     [function] => updateformulario
 )
+Set log en true Array
+(
+    [conid] => 5b4b3e63-0be5-445a-ad50-ea5dd1eea459
+    [empresa] => prueba
+    [apellidos] => prueba 2
+    [nombres] => prueba 3
+    [dni] => 123
+    [banco] => prueba 4
+    [cbu] => 1234567890
+    [userid] => NWI0YjNlNjMtMGJlNS00NDVhLWFkNTAtZWE1ZGQxZWVhNDU5
+    [function] => updateformulario
+)
+Set log en true Array
+(
+    [conid] => 7a4d4aed-44c0-489a-adbc-c23d208e22d9
+    [empresa] => LABS357
+    [apellidos] => PRUEBA
+    [nombres] => DASHBOARD
+    [dni] => 11111111
+    [banco] => BANCO
+    [cbu] => 12345678901234567
+    [userid] => N2E0ZDRhZWQtNDRjMC00ODlhLWFkYmMtYzIzZDIwOGUyMmQ5
+    [function] => updateformulario
+)
+Set log en true Array
+(
+    [conid] => ed568afb-a7b4-4a63-bc87-2227a8d68e3a
+    [empresa] => AMS
+    [apellidos] => Sacone
+    [nombres] => Fernando
+    [dni] => 35463167
+    [banco] => FRANCES
+    [cbu] => 01743747354757757
+    [userid] => ZWQ1NjhhZmItYTdiNC00YTYzLWJjODctMjIyN2E4ZDY4ZTNh
+    [function] => updateformulario
+)
+Set log en true Array
+(
+    [conid] => 13adb72c-7103-4b67-a8a0-70596726e9ee
+    [empresa] => AMS
+    [apellidos] => COLOMBERO
+    [nombres] => EMILIO
+    [dni] => 38722899
+    [banco] => HSBC
+    [cbu] => 1500657000065761427028
+    [userid] => MTNhZGI3MmMtNzEwMy00YjY3LWE4YTAtNzA1OTY3MjZlOWVl
+    [function] => updateformulario
+)
+Set log en true Array
+(
+    [conid] => f6824b6c-d827-47d6-bf43-eb883ce3250f
+    [empresa] => SMP
+    [apellidos] => Gutierrez
+    [nombres] => Florencia Anahi
+    [dni] => 34452429
+    [banco] => Icbc
+    [cbu] => 0150964301000011762882
+    [userid] => ZjY4MjRiNmMtZDgyNy00N2Q2LWJmNDMtZWI4ODNjZTMyNTBm
+    [function] => updateformulario
+)
+Set log en true Array
+(
+    [conid] => 019d68b7-31be-4fc1-a305-b36b7cf4bddc
+    [empresa] => LABS357
+    [apellidos] => ENIAC GROUP
+    [nombres] => PRUEBA DE FORMULARIO
+    [dni] => 12345678
+    [banco] => PRUEBA NO CONTESTAR
+    [cbu] => 12345671231212389
+    [userid] => MDE5ZDY4YjctMzFiZS00ZmMxLWEzMDUtYjM2YjdjZjRiZGRj
+    [function] => updateformulario
+)
+Set log en true Array
+(
+    [conid] => ed3631c9-b8a9-415d-bd65-037e495d1e4e
+    [empresa] => sancor salud
+    [apellidos] => hildebrandt 
+    [nombres] => maria fernanda 
+    [dni] => 34510771
+    [banco] => credicoop 
+    [cbu] => 1910038455103800107871
+    [userid] => ZWQzNjMxYzktYjhhOS00MTVkLWJkNjUtMDM3ZTQ5NWQxZTRl
+    [function] => updateformulario
+)

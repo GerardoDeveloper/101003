@@ -131,7 +131,7 @@ function updateFormulario()
     $result = $controller->updateFormulario($conid, $fecha_fin, $idTipoConsulta, $descripcion_consulta);
 
     if ($result[0] == 1) {
-        if (isset($conid) && !empty($conid)) {
+        if (isset($conid ) && !empty($conid )) {
             $_SESSION["conid"] = $conid;
         }
         setLog(200, $result[1], true); // Envía la palabra al hilo.
