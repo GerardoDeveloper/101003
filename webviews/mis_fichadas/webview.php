@@ -58,11 +58,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Formulario Licencias</title>
+    <title>Formulario Fichadas</title>
 
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../library/bootstrap-4.5.3-dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../licencias/css/style.css?<?php echo $timestamp?>">
+    <link rel="stylesheet" href="../mis_fichadas/css/style.css?<?php echo $timestamp?>">
     <!-- <link rel="stylesheet" href="css/global.css?<?php echo $timestamp ?>"> -->
 </head>
 <body>
