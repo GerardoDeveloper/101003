@@ -3,6 +3,11 @@
  * Este script concentra todas las constantes que el bot necesita para su funcionamiento.
  */
 
+/*==============================================================================================*/
+
+// Constante que determina si el bot esta de producción o en desarrollo. True sí esta en producción, false sí esta en desarrollo.
+const BOT_IN_PRODUCTION = false;
+
 /**
  * Contiene todos los destinatarios del formulario.
  *
@@ -47,7 +52,6 @@ define("TABLE_FORMULRIO_OTRAS_CONSULTAS", "formulario_otras_consultas");
 define("TABLE_FORMULRIO_OTRAS_CONSULTAS_SOBRE_LICENCIAS", "formulario_otras_consultas_sobre_licencias");
 define("TABLE_FORMULRIO_TIPO_CONSULTAS", "tipo_consultas");
 define("TABLE_CD_EMAIL", "cd_mails");
-
 
 //==========================URLs FORMULARIOS============================
 define("FORM_OTRAS_CONSULTAS", "https://labs357.com.ar/hilos/101003/webviews/otras_consultas/webview.php");
