@@ -14,7 +14,7 @@ const toggleFade = (e) => {
 
 //Carga de la pagina.
 document.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('detale_licencia').style.display = 'none';
+    document.getElementById('detalle_fichadas').style.display = 'none';
 
     toggleFade(document.querySelector('.loader'));
 });
@@ -93,7 +93,7 @@ $("#btnClose").on("click", function (event) {
 
     toggleFade(document.querySelector('.loader'));
 
-    let tipo_lic = $("#tipo_licencia");
+    let tipo_lic = $("#fichadas");
     let opt = tipo_lic[0][tipo_lic[0].selectedIndex].value;
     let data = new FormData();
 
@@ -120,11 +120,11 @@ $("#btnClose").on("click", function (event) {
     });
 });
 
-$("#tipo_licencia").on("change", function () {
+$("#fichadas").on("change", function () {
     toggleFade(document.querySelector('.loader'));
 
 
-    $("#detale_licencia").fadeIn("slow", function () {
+    $("#detalle_fichadas").fadeIn("slow", function () {
         $(this).css("display", "block");
     });
 
@@ -145,7 +145,7 @@ $("#tipo_licencia").on("change", function () {
             toggleFade(document.querySelector('.loader'));
 
             let resData = JSON.parse(res);
-            $("#detale_licencia").text(resData.cantidad_dias + "\n\n" + resData.observaciones);
+            $("#detalle_fichadas").text(resData.cantidad_dias + "\n\n" + resData.observaciones);
         },
         error: function (e) {
             console.log("Error Updating");

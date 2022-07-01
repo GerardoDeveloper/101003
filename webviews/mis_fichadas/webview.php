@@ -53,6 +53,7 @@ try {
 
         $instancia = FormularioController::getInstance();
         $instancia->insertFormulario($conId, $dateTime, $origen);
+        $tipos_licencia = $instancia->getMisFichadas();
     }
 } catch (Exception $e) {
     $error = $e->getMessage();
@@ -97,27 +98,27 @@ try {
         <div class="content-wrapper">
             <form id="formData" class="form-wrapper">
                 <?php
-unset($_SESSION["conid"]);
+                    unset($_SESSION["conid"]);
 
-if (isset($_GET["conid"]) && !empty($_GET["conid"])) {
-    $_SESSION["conid"] = $_GET["conid"];
-} else if (isset($_POST["conid"]) && !empty($_POST["conid"])) {
-    $_SESSION["conid"] = $_POST["conid"];
-}
+                    if (isset($_GET["conid"]) && !empty($_GET["conid"])) {
+                        $_SESSION["conid"] = $_GET["conid"];
+                    } else if (isset($_POST["conid"]) && !empty($_POST["conid"])) {
+                        $_SESSION["conid"] = $_POST["conid"];
+                    }
 
-if ($_SESSION["conid"]) {
-    echo '<input type="hidden" name="conid" id="conid" value="' . $_SESSION["conid"] . '" data-value="' . $_SESSION["conid"] . '" />';
-}
-?>
+                    if ($_SESSION["conid"]) {
+                        echo '<input type="hidden" name="conid" id="conid" value="' . $_SESSION["conid"] . '" data-value="' . $_SESSION["conid"] . '" />';
+                    }
+                ?>
                 <div class="mt-3 mb-3">
-                    <select name="tipo_licencia" id="tipo_licencia" class="form-control tipo_licencia_select" autocomplete="off" required onfocus="(this.options[0].style.display='none')">
+                    <select name="fichadas" id="fichadas" class="form-control fichadas_select" autocomplete="off" required onfocus="(this.options[0].style.display='none')">
                         <option value="" disabled selected>Selecciona el tipo de licencia</option>
                         <?php echo $tipos_licencia; ?>
                     </select>
                 </div>
 
                 <div class="mb-3">
-                    <textarea class="form-control textarea_TipoDetalleLicencia" name="detale_licencia" id="detale_licencia" readonly cols="30" rows="10"  placeholder="Detalle del tipo de licencia seleccionada"></textarea>
+                    <div class="form-control detalle_Fichadas" id="detalle_fichadas" data-placeholder=""></div>
                 </div>
             </form>
 

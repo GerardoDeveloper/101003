@@ -21,14 +21,14 @@
   background-color: #d8d8d8 !important;
 }
 
-.tipo_licencia_select{
+.fichadas_select{
   border: 2px solid #A9F756;
   color: #0963AC;
   border-radius: 0.6rem;
 }
 
 
-.textarea_TipoDetalleLicencia{
+.detalle_Fichadas{
   border: 2px solid #A9F756;
   border-radius: 1.5rem;
   color: #0963AC;
@@ -36,6 +36,14 @@
      para que el fondo del textarea sea blanco.
   */
   background-color: #ffffff !important;
+  height: 250px;
+  overflow: auto;  /* Permitir que el contenido desbordante pueda scrollearse */
+  resize: vertical;  /* Permitir que el contenedor pueda cambiarse de tamaño verticalemente */
+}
+
+/* Placeholder del detalle de fichadas */
+.detalle_Fichadas:empty:not(:focus)::before {
+    content: attr(data-placeholder);
 }
 
 /* start_loader */
