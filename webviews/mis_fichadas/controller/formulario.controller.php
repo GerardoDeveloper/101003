@@ -86,15 +86,17 @@ class FormularioController
      *
      * @return array
      */
-    public function getMisFichadas()
+   public function getMisFichadas()
     {
-        $res = $this->modelInstancia->getMisFichadas();
+        $result = $this->modelInstancia->getMisFichadas();
         $options = "";
-        if (count($res) > 0) {
-            foreach ($res as $key => $value) {
-                $clave = $value["id"];
-                $valor = $value["descripcion"];
-                $options .= "<option value='$clave'>$valor</option>\n";
+        $lengthResult = count($result);
+
+        if ($lengthResult > 0) {
+            foreach ($result as $key => $value) {
+                $id = $value["id"];
+                $descripcion = trim($value["descripcion_mis_fichadas"]);
+                $options .= "<option value='$id'>$descripcion</option>\n";
             }
         }
         return $options;
@@ -108,9 +110,30 @@ class FormularioController
      */
     public function getDetallesMisFichadas($idMisFichadas)
     {
-        $res = $this->modelInstancia->getDetallesMisFichadas($idMisFichadas);
-        setLog($res[0], $res[1], false);
-        return $res;
+        $result = $this->modelInstancia->getDetallesMisFichadas($idMisFichadas);
+        $result = $this->findURLreplace($result["descripcion"]);
+        setLog($result[0], $result[1], false);
+        return $result;
+    }
+
+    /**
+     * Busca y reemplaza enlaces de URL y les agrega el tag '<a>'
+     *
+     * @param [strong] $text Texto donde se buscará.
+     * @return string
+     */
+    private function findURLreplace($text)
+    {
+        $needle = "\${";
+        $inicioURL = stripos($text, $needle);
+        $substr = substr($text, $inicioURL + 5);
+        $finalURL = stripos($substr, "}");
+        $substr2 = substr($substr, 0, $finalURL);
+        $findURL = "\${" . $substr2 . "}";
+        $anchor = "<a href=\"$substr2\" target=\"_blank\"><strong><u>$substr2</strong></u></a>";
+        $textoFinal = str_replace($findURL, $anchor, $text);
+
+        return $textoFinal;
     }
 }
 
