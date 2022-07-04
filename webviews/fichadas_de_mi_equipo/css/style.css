@@ -21,14 +21,14 @@
   background-color: #d8d8d8 !important;
 }
 
-.tipo_licencia_select{
+.fichadas-equipo_select{
   border: 2px solid #A9F756;
   color: #0963AC;
   border-radius: 0.6rem;
 }
 
 
-.textarea_TipoDetalleLicencia{
+.detalle_FichadasEquipo{
   border: 2px solid #A9F756;
   border-radius: 1.5rem;
   color: #0963AC;
@@ -36,6 +36,16 @@
      para que el fondo del textarea sea blanco.
   */
   background-color: #ffffff !important;
+  height: 250px;
+  overflow-y: auto;  /* Permitir que el contenido desbordante pueda scrollearse verticalmente */
+  overflow-x: hidden;  /* Evitar scrolleo horizontal */
+  overflow-wrap: break-word; /* Si el texto es muy largo, remperlo y continuar línea abajo */
+  resize: vertical;  /* Permitir que el contenedor pueda cambiarse de tamaño verticalemente */
+}
+
+/* Placeholder del detalle de fichadas de equipo */
+.detalle_FichadasEquipo:empty:not(:focus)::before {
+    content: attr(data-placeholder);
 }
 
 /* start_loader */

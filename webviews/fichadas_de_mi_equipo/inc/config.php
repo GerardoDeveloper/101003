@@ -1,8 +1,19 @@
 <?php
-define("DB_HOST", "127.0.0.1");
-define("DB_NAME", "_101003");
-define("DB_USER", "root");
-define("DB_PASSWORD", "homero");
+if (file_exists(__DIR__ . "/../../../config.php")) {
+    require_once __DIR__ . "/../../../config.php";
+}
+
+if (BOT_IN_PRODUCTION) {
+    define("DB_HOST", "127.0.0.1");
+    define("DB_NAME", "_101003");
+    define("DB_USER", "root");
+    define("DB_PASSWORD", "homero");
+} else {
+    define("DB_HOST", "127.0.0.1");
+    define("DB_NAME", "_101003");
+    define("DB_USER", "root");
+    define("DB_PASSWORD", "");
+}
 
 define("LABS_CUENTA", "101003");
 

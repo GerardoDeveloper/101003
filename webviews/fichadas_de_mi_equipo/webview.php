@@ -1,5 +1,8 @@
 <?php
-//file_put_contents(__DIR__ . '/prueba.log', print_r($_SERVER, true), FILE_APPEND);
+if (file_exists(__DIR__ . "/../../config.php")) {
+    require_once __DIR__ . "/../../config.php";
+}
+
 try {
     error_reporting(E_ALL ^ E_NOTICE ^ E_WARNING);
 
@@ -11,36 +14,46 @@ try {
     $fecha = new DateTime();
     $timestamp = $fecha->getTimestamp();
 
-    if (isset($_GET) || isset($_POST)) {
-        if (isset($_GET["userid"]) && !empty($_GET["userid"])) {
-            $userId = $_GET["userid"];
-        } else {
-            if (isset($_POST["userid"]) && !empty($_POST["userid"])) {
-                $userId = $_POST["userid"];
+    if (BOT_IN_PRODUCTION) {    
+        if (isset($_GET) || isset($_POST)) {
+            if (isset($_GET["userid"]) && !empty($_GET["userid"])) {
+                $userId = $_GET["userid"];
             } else {
-                $userId = "";
+                if (isset($_POST["userid"]) && !empty($_POST["userid"])) {
+                    $userId = $_POST["userid"];
+                } else {
+                    $userId = "";
 
-                die();
+                    die();
+                }
             }
         }
-    }
 
-    $_SESSION["userid"] = $userId;
+        $_SESSION["userid"] = $userId;
 
-    if (isset($_GET["conid"]) && !empty($_GET["conid"])) {
-        $origen = "web";
-    } else if (isset($_POST["conid"]) && !empty($_POST["conid"])) {
-        $origen = "web";
+        if (isset($_GET["conid"]) && !empty($_GET["conid"])) {
+            $origen = "web";
+        } else if (isset($_POST["conid"]) && !empty($_POST["conid"])) {
+            $origen = "web";
+        } else {
+            $origen = "facebook";
+        }
+
+        if (($origen == "web" && array_key_exists("HTTP_SEC_FETCH_DEST", $_SERVER)
+            && $_SERVER["HTTP_SEC_FETCH_DEST"] == "iframe")
+            || $origen == "facebook") {
+            $instancia = FormularioController::getInstance();
+            $instancia->insertFormulario($userId, date("Y/m/d H:i:s"), $origen);
+            //Obtiene tipos de licencia
+            $tipos_licencia = $instancia->getTiposLicencia();
+        }
     } else {
-        $origen = "facebook";
-    }
+        $conId = rand(0, 1152637485966359);
+        $origen = "web";
+        $dateTime = date("Y/m/d H:i:s");
 
-    if (($origen == "web" && array_key_exists("HTTP_SEC_FETCH_DEST", $_SERVER)
-        && $_SERVER["HTTP_SEC_FETCH_DEST"] == "iframe")
-        || $origen == "facebook") {
         $instancia = FormularioController::getInstance();
-        $instancia->insertFormulario($userId, date("Y/m/d H:i:s"), $origen);
-        //Obtiene tipos de licencia
+        $instancia->insertFormulario($conId, $dateTime, $origen);
         $tipos_licencia = $instancia->getTiposLicencia();
     }
 
@@ -100,14 +113,14 @@ try {
                 }
                 ?>
                 <div class="mt-3 mb-3">
-                    <select name="tipo_licencia" id="tipo_licencia" class="form-control tipo_licencia_select" autocomplete="off" required onfocus="(this.options[0].style.display='none')">
+                    <select name="fichadas-equipo" id="fichadas-equipo" class="form-control fichadas-equipo_select" autocomplete="off" required onfocus="(this.options[0].style.display='none')">
                         <option value="" disabled selected>Selecciona el tipo de licencia</option>
                         <?php echo $tipos_licencia; ?>
                     </select>
                 </div>
 
                 <div class="mb-3">
-                    <textarea class="form-control textarea_TipoDetalleLicencia" name="detale_licencia" id="detale_licencia" readonly cols="30" rows="10"  placeholder="Detalle del tipo de licencia seleccionada"></textarea>
+                <div class="form-control detalle_FichadasEquipo" id="detalle_fichadas_equipo" data-placeholder=""></div>
                 </div>
             </form>
 
@@ -118,22 +131,6 @@ try {
             </div>
         </div>
     </div>
-
-    <!-- <div class="overlay loader"></div>
-    <div class="sk-circle loader">
-        <div class="sk-circle1 sk-child"></div>
-        <div class="sk-circle2 sk-child"></div>
-        <div class="sk-circle3 sk-child"></div>
-        <div class="sk-circle4 sk-child"></div>
-        <div class="sk-circle5 sk-child"></div>
-        <div class="sk-circle6 sk-child"></div>
-        <div class="sk-circle7 sk-child"></div>
-        <div class="sk-circle8 sk-child"></div>
-        <div class="sk-circle9 sk-child"></div>
-        <div class="sk-circle10 sk-child"></div>
-        <div class="sk-circle11 sk-child"></div>
-        <div class="sk-circle12 sk-child"></div>
-    </div>     -->
 
     <script src="libs/jquery.min.js"></script>
     <script>var userId = "<?php echo base64_encode($userId) ?>";</script>
