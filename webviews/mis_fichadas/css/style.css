@@ -37,7 +37,9 @@
   */
   background-color: #ffffff !important;
   height: 250px;
-  overflow: auto;  /* Permitir que el contenido desbordante pueda scrollearse */
+  overflow-y: auto;  /* Permitir que el contenido desbordante pueda scrollearse verticalmente */
+  overflow-x: hidden;  /* Evitar scrolleo horizontal */
+  overflow-wrap: break-word; /* Si el texto es muy largo, remperlo y continuar línea abajo */
   resize: vertical;  /* Permitir que el contenedor pueda cambiarse de tamaño verticalemente */
 }
 
