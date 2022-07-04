@@ -86,7 +86,7 @@ class FormularioController
      *
      * @return array
      */
-   public function getMisFichadas()
+    public function getMisFichadas()
     {
         $result = $this->modelInstancia->getMisFichadas();
         $options = "";
@@ -111,29 +111,113 @@ class FormularioController
     public function getDetallesMisFichadas($idMisFichadas)
     {
         $result = $this->modelInstancia->getDetallesMisFichadas($idMisFichadas);
-        $result = $this->findURLreplace($result["descripcion"]);
+        $result = $this->findURLreplace($idMisFichadas, $result["descripcion"]);
         setLog($result[0], $result[1], false);
         return $result;
     }
 
     /**
+     * /**
      * Busca y reemplaza enlaces de URL y les agrega el tag '<a>'
      *
-     * @param [strong] $text Texto donde se buscará.
+     * @param integer $idMisFichadas Id del item seleccionado.
+     * @param string $text Texto donde se buscará.
+     *
      * @return string
      */
-    private function findURLreplace($text)
+    private function findURLreplace($idMisFichadas, $text)
     {
-        $needle = "\${";
-        $inicioURL = stripos($text, $needle);
-        $substr = substr($text, $inicioURL + 5);
-        $finalURL = stripos($substr, "}");
-        $substr2 = substr($substr, 0, $finalURL);
-        $findURL = "\${" . $substr2 . "}";
-        $anchor = "<a href=\"$substr2\" target=\"_blank\"><strong><u>$substr2</strong></u></a>";
-        $textoFinal = str_replace($findURL, $anchor, $text);
+        $arrayTextLink = array(
+            array(
+                "Nueva intranet home",
+                "GeovictoriaApp",
+            ),
+            "Reporte de asistencia",
+        );
+
+        $arrayLinks = array();
+        $c = 0;
+        $strCount = substr_count($text, "\${");
+
+        if ($strCount !== 0) {
+            for ($i = 0; $i < $strCount; $i++) {
+                if (count($arrayLinks) === 0) {
+                    $text = "<p>$text</p>";
+                    $text = str_replace("\\n", "<br>", $text);
+                    $inicioURL = stripos($text, "\${");
+                    $substr = substr($text, $inicioURL + 2);
+                    $finalURL = stripos($substr, "}");
+                    $substr2 = substr($substr, 0, $finalURL);
+                    $findURL = "\${" . $substr2 . "}";
+                    $textToShow = ($idMisFichadas !== 3) ? $this->evaluateSelected($arrayTextLink, $idMisFichadas) : $substr2;
+                    $anchor = "<a href=\"$substr2\" target=\"_blank\"><strong><u>$textToShow</strong></u></a>";
+                    $textoFinal = str_replace($findURL, $anchor, $text);
+
+                    array_push($arrayLinks, array(
+                        "link" => $textoFinal,
+                    ));
+
+                    $c++;
+                } else {
+                    foreach ($arrayLinks as $key => $value) {
+                        end($arrayLinks); // Mueve el puntero interno al final del array.
+                        $key = key($arrayLinks); // Obtiene la clave del elemento apuntada por el puntero interno.
+
+                        $link = $arrayLinks[$key]["link"];
+                        $link = str_replace("\\n", "<br>", $link);
+                        $inicioURL = stripos($link, "\${");
+                        $substr = substr($link, $inicioURL + 2);
+                        $finalURL = stripos($substr, "}");
+                        $substr2 = substr($substr, 0, $finalURL);
+                        $findURL = "\${" . $substr2 . "}";
+                        $textToShow = (isset($arrayTextLink[0][$c])) ? $arrayTextLink[0][$c] : $substr2;
+                        $anchor = "<a href=\"$substr2\" target=\"_blank\"><strong><u>$textToShow</strong></u></a>";
+                        $textoFinal = str_replace($findURL, $anchor, $link);
+
+                        array_push($arrayLinks, array(
+                            "link" => $textoFinal,
+                        ));
+
+                        unset($arrayLinks[0]); // Elimina el 1er indice, porque se repite el texto.
+                        $c++;
+                    }
+                }
+            }
+
+            end($arrayLinks); // Mueve el puntero interno al final del array.
+            $key = key($arrayLinks); // Obtiene la clave del elemento apuntada por el puntero interno.
+            $textoFinal = $arrayLinks[$key]["link"];
+
+        } else {
+            $textoFinal = "<p>$text</p>";
+        }
 
         return $textoFinal;
+    }
+
+    /**
+     * Evalua el id seleccionado y retorna el texto según el id.
+     *
+     * @param array $array Array que contiene los textos a mostrar en los enlaces.
+     * @param integer $idSelected Id del item seleccionado.
+     * @return string
+     */
+    private function evaluateSelected($array, $idSelected)
+    {
+        $lengthArray = count($array);
+
+        if ($lengthArray > 0) {
+            switch ($idSelected) {
+                case 1:
+                    $textToShow = $array[0][0];
+                    return $textToShow;
+                    break;
+                case 5:
+                    $textToShow = $array[1];
+                    return $textToShow;
+                    break;
+            }
+        }
     }
 }
 
@@ -162,6 +246,7 @@ function getDetallesMisFichadas()
 {
     if (isset($_REQUEST["idMisFichadas"]) && !empty($_REQUEST["idMisFichadas"])) {
         $idMisFichadas = $_REQUEST["idMisFichadas"];
+
         $controller = FormularioController::getInstance();
         $result = $controller->getDetallesMisFichadas($idMisFichadas);
 
