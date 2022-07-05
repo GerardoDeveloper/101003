@@ -38,13 +38,11 @@ try {
             $origen = "facebook";
         }
 
-        if (($origen == "web" && array_key_exists("HTTP_SEC_FETCH_DEST", $_SERVER)
-            && $_SERVER["HTTP_SEC_FETCH_DEST"] == "iframe")
-            || $origen == "facebook") {
+        if (($origen == "web" && array_key_exists("HTTP_SEC_FETCH_DEST", $_SERVER) && $_SERVER["HTTP_SEC_FETCH_DEST"] == "iframe") || $origen == "facebook") {
             $instancia = FormularioController::getInstance();
             $instancia->insertFormulario($userId, date("Y/m/d H:i:s"), $origen);
-            //Obtiene tipos de licencia
-            $tipos_licencia = $instancia->getTiposLicencia();
+
+            $misFichadas = $instancia->getMisFichadas();
         }
     } else {
         $conId = rand(0, 1152637485966359);
@@ -53,7 +51,7 @@ try {
 
         $instancia = FormularioController::getInstance();
         $instancia->insertFormulario($conId, $dateTime, $origen);
-        $tipos_licencia = $instancia->getMisFichadas();
+        $misFichadas = $instancia->getMisFichadas();
     }
 } catch (Exception $e) {
     $error = $e->getMessage();
@@ -67,7 +65,7 @@ try {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Formulario Fichadas</title>
+    <title>Formulario Mis Fichadas</title>
 
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../library/bootstrap-4.5.3-dist/css/bootstrap.min.css">
@@ -111,8 +109,8 @@ try {
                 ?>
                 <div class="mt-3 mb-3">
                     <select name="fichadas" id="fichadas" class="form-control fichadas_select" autocomplete="off" required onfocus="(this.options[0].style.display='none')">
-                        <option value="" disabled selected>Selecciona el tipo de fichadas</option>
-                        <?php echo $tipos_licencia; ?>
+                        <option value="" disabled selected>Selecciona el tipo de licencia</option>
+                        <?php echo $misFichadas; ?>
                     </select>
                 </div>
 
