@@ -123,16 +123,14 @@ $("#btnClose").on("click", function (event) {
 $("#fichadas").on("change", function () {
     toggleFade(document.querySelector('.loader'));
 
-
     $("#detalle_fichadas").fadeIn("slow", function () {
         $(this).css("display", "block");
     });
 
     let opt = this.options[this.selectedIndex].value;
     let data = new FormData($("#formData")[0]);
-    data.append("userid", userId);
-    data.append("licencia", opt);
-    data.append("function", "getDetallesLicencia");
+    data.append("idMisFichadas", opt);
+    data.append("function", "getDetallesMisFichadas");
 
     $.ajax({
         url: "controller/formulario.controller.php",
@@ -145,7 +143,7 @@ $("#fichadas").on("change", function () {
             toggleFade(document.querySelector('.loader'));
 
             let resData = JSON.parse(res);
-            $("#detalle_fichadas").text(resData.cantidad_dias + "\n\n" + resData.observaciones);
+            $("#detalle_fichadas").html(resData);
         },
         error: function (e) {
             console.log("Error Updating");
