@@ -144,7 +144,7 @@ $("#fichadas-equipo").on("change", function () {
             toggleFade(document.querySelector('.loader'));
 
             let resData = JSON.parse(res);
-            $("#detalle_fichadas_equipo").text(resData.cantidad_dias + "\n\n" + resData.observaciones);
+            $("#detalle_fichadas_equipo").html(resData);
         },
         error: function (e) {
             console.log("Error Updating");

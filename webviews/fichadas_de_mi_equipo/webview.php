@@ -129,14 +129,14 @@ try {
                 }
                 ?>
                 <div class="mt-3 mb-3">
-                    <select name="tipo_licencia" id="tipo_licencia" class="form-control tipo_licencia_select" autocomplete="off" required onfocus="(this.options[0].style.display='none')">
+                    <select name="fichadas-equipo" id="fichadas-equipo" class="form-control fichadas-equipo_select" autocomplete="off" required onfocus="(this.options[0].style.display='none')">
                         <option value="" disabled selected>Selecciona el tipo de fichada del equipo</option>
                         <?php echo $fichadasDeMiEquipo; ?>
                     </select>
                 </div>
 
                 <div class="mb-3">
-                    <textarea class="form-control textarea_TipoDetalleLicencia" name="detale_licencia" id="detale_licencia" readonly cols="30" rows="10"  placeholder="Detalle del tipo de licencia seleccionada"></textarea>
+                    <div class="form-control detalle_FichadasEquipo" id="detalle_fichadas_equipo" data-placeholder="Detalle del tipo de licencia seleccionada"></div>
                 </div>
             </form>
 
