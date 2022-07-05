@@ -1,46 +1,50 @@
-.btn-primary{
-  border: none;
-  color: #0963AC;
-  background: #F2F2F2;
-  font-family: 'Titillium web', sans-serif !important;
-  box-shadow: 1px 2px 3px 1px rgba(123,118,118,0.6);
-  -webkit-box-shadow: 1px 2px 3px 1px rgba(123,118,118,0.6);
-  -moz-box-shadow: 1px 2px 3px 1px rgba(123,118,118,0.6);
+.btn-primary {
+    border: none;
+    color: #0963AC;
+    background: #F2F2F2;
+    font-family: 'Titillium web', sans-serif !important;
+    box-shadow: 1px 2px 3px 1px rgba(123, 118, 118, 0.6);
+    -webkit-box-shadow: 1px 2px 3px 1px rgba(123, 118, 118, 0.6);
+    -moz-box-shadow: 1px 2px 3px 1px rgba(123, 118, 118, 0.6);
 }
 
-.btn-primary:hover{
-  border: none;
-  background: #A9F756 !important;
-    box-shadow: 1px 2px 3px 1px rgba(123,118,118,0.6);
-    -webkit-box-shadow: 1px 2px 3px 1px rgba(123,118,118,0.6);
-    -moz-box-shadow: 1px 2px 3px 1px rgba(123,118,118,0.6);
+.btn-primary:hover {
+    border: none;
+    background: #A9F756 !important;
+    box-shadow: 1px 2px 3px 1px rgba(123, 118, 118, 0.6);
+    -webkit-box-shadow: 1px 2px 3px 1px rgba(123, 118, 118, 0.6);
+    -moz-box-shadow: 1px 2px 3px 1px rgba(123, 118, 118, 0.6);
 }
 
-.btn-primary:active{
-  border: none;
-  background-color: #d8d8d8 !important;
+.btn-primary:active {
+    border: none;
+    background-color: #d8d8d8 !important;
 }
 
-.fichadas_select{
-  border: 2px solid #A9F756;
-  color: #0963AC;
-  border-radius: 0.6rem;
+.fichadas_select {
+    border: 2px solid #A9F756;
+    color: #0963AC;
+    border-radius: 0.6rem;
 }
 
 
-.detalle_Fichadas{
-  border: 2px solid #A9F756;
-  border-radius: 1.5rem;
-  color: #0963AC;
-  /* sobresribe la clase ".form-control:disabled, .form-control[readonly]" y la propiedad de bootstrap
+.detalle_Fichadas {
+    border: 2px solid #A9F756;
+    border-radius: 1.5rem;
+    color: #0963AC;
+    /* sobresribe la clase ".form-control:disabled, .form-control[readonly]" y la propiedad de bootstrap
      para que el fondo del textarea sea blanco.
   */
-  background-color: #ffffff !important;
-  height: 250px;
-  overflow-y: auto;  /* Permitir que el contenido desbordante pueda scrollearse verticalmente */
-  overflow-x: hidden;  /* Evitar scrolleo horizontal */
-  overflow-wrap: break-word; /* Si el texto es muy largo, remperlo y continuar línea abajo */
-  resize: vertical;  /* Permitir que el contenedor pueda cambiarse de tamaño verticalemente */
+    background-color: #ffffff !important;
+    height: 250px;
+    overflow-y: auto;
+    /* Permitir que el contenido desbordante pueda scrollearse verticalmente */
+    overflow-x: hidden;
+    /* Evitar scrolleo horizontal */
+    overflow-wrap: break-word;
+    /* Si el texto es muy largo, remperlo y continuar línea abajo */
+    resize: vertical;
+    /* Permitir que el contenedor pueda cambiarse de tamaño verticalemente */
 }
 
 /* Placeholder del detalle de fichadas */
@@ -169,4 +173,5 @@ div.loader {
         opacity: 0;
     }
 }
+
 /* end_loader */

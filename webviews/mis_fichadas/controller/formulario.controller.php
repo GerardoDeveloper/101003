@@ -127,6 +127,7 @@ class FormularioController
      */
     private function findURLreplace($idMisFichadas, $text)
     {
+        $idMisFichadas = intval($idMisFichadas);
         $arrayTextLink = array(
             array(
                 "Nueva intranet home",
@@ -150,7 +151,16 @@ class FormularioController
                     $substr2 = substr($substr, 0, $finalURL);
                     $findURL = "\${" . $substr2 . "}";
                     $textToShow = ($idMisFichadas !== 3) ? $this->evaluateSelected($arrayTextLink, $idMisFichadas) : $substr2;
-                    $anchor = "<a href=\"$substr2\" target=\"_blank\"><strong><u>$textToShow</strong></u></a>";
+
+                    // Sí es la opción "¿Qué hago si no puedo ingresar con mi usuario y contraseña?"
+                    if ($idMisFichadas !== 3) {
+                        $anchor = "<a href=\"$substr2\" target=\"_blank\"><strong><u>$textToShow</strong></u></a>";
+                    } else {
+                        // Concatena el texto para abrir el email en el dispositivo.
+                        $substr2 = "mailto:" . $substr2;
+                        $anchor = "<a href=\"$substr2\" target=\"_blank\"><strong><u>$textToShow</strong></u></a>";
+                    }
+
                     $textoFinal = str_replace($findURL, $anchor, $text);
 
                     array_push($arrayLinks, array(
