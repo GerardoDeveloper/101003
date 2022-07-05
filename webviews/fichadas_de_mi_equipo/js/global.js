@@ -94,11 +94,11 @@ $("#btnClose").on("click", function (event) {
     toggleFade(document.querySelector('.loader'));
 
     let tipo_lic = $("#fichadas-equipo");
-    let opt = tipo_lic[0][tipo_lic[0].selectedIndex].value;
+    let idFichadasDeMiEquipo = tipo_lic[0][tipo_lic[0].selectedIndex].value;
     let data = new FormData();
 
-    data.append("userid", userId);
-    data.append("licencia", opt);
+    data.append("conId", conId);
+    data.append("idFichadasDeMiEquipo", idFichadasDeMiEquipo);
     data.append("function", "updateFormulario");
 
     $.ajax({
@@ -128,11 +128,10 @@ $("#fichadas-equipo").on("change", function () {
         $(this).css("display", "block");
     });
 
-    let opt = this.options[this.selectedIndex].value;
+    let idFichadasDeMiEquipo = this.options[this.selectedIndex].value;
     let data = new FormData($("#formData")[0]);
-    data.append("userid", userId);
-    data.append("licencia", opt);
-    data.append("function", "getDetallesLicencia");
+    data.append("idFichadasDeMiEquipo", idFichadasDeMiEquipo);
+    data.append("function", "getDetallesFichadasDeMiEquipo");
 
     $.ajax({
         url: "controller/formulario.controller.php",

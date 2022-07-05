@@ -326,7 +326,7 @@ function updateFormulario()
 
     if ($result[0] == 1) {
         if (isset($_REQUEST["conId"]) && !empty($_REQUEST["conId"])) {
-            $_SESSION["conId"] = $_REQUEST["conId"];
+            $_SESSION["conid"] = $_REQUEST["conId"];
         }
         setLog(200, $result[1], true);
     } else {

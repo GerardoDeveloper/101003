@@ -149,7 +149,7 @@ try {
     </div>
 
     <script src="libs/jquery.min.js"></script>
-    <script>var userId = "<?php echo base64_encode($userId) ?>";</script>
+    <script>let conId = "<?php echo base64_encode($conId) ?>";</script>
     <script src="js/global.js?<?php echo $timestamp ?>"></script>
 </body>
 </html>
