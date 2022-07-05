@@ -67,7 +67,6 @@ function setLog($cod_error, $error, $send = false)
             }
 
             $jsonData = str_replace("\\\\n", "\n", $jsonData);
-            //$jsonData = str_replace("\\uD83D\\uDE09", "\uD83D\uDE09", $jsonData);
 
             sendToMessenger($jsonData);
         }

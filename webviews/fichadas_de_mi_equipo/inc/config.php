@@ -15,18 +15,20 @@ if (BOT_IN_PRODUCTION) {
     define("DB_PASSWORD", "");
 }
 
+
 define("LABS_CUENTA", "101003");
 
 define("FB_TOKEN", "");
 
 define("TB_FORMULARIO", "formulario_fichadas_de_mi_equipo");
-define("TB_TIPO_LICENCIA", "tipo_licencia");
-define("TB_DETALLE_LICENCIA", "detalle_licencia");
+define("TB_FICHADAS_DE_MI_EQUIPO", "fichadas_de_mi_equipo");
+define("TB_DETALLE_FICHADAS_DE_MI_EQUIPO", "detalle_fichadas_de_mi_equipo");
 
 $codes = array(
     "200" => array(
         "message" => "Envio consulta fichadas de mi equipo",
-        "payload" => "",
+        "payload" => "_fichada de mi equipo",
     ),
 );
+
 define("STATES_CODES", json_encode($codes));
