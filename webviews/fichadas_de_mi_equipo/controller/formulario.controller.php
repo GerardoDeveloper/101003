@@ -67,9 +67,9 @@ class FormularioController
      * @param integer $idFichadasDeMiEquipo  Id de la fichada del equipo.
      * @return void
      */
-    public function updateFormulario($identificador, $fecha_fin, $idMisFichadas)
+    public function updateFormulario($identificador, $fecha_fin, $idFichadasDeMiEquipo)
     {
-        $res = $this->modelInstancia->updateFormulario($identificador, $fecha_fin, $idMisFichadas);
+        $res = $this->modelInstancia->updateFormulario($identificador, $fecha_fin, $idFichadasDeMiEquipo);
         setLog($res[0], $res[1], false);
         return $res;
     }

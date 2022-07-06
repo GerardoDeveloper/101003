@@ -1,8 +1,13 @@
 <?php
 error_reporting(E_ALL ^ E_NOTICE ^ E_WARNING);
 
-include_once $_SERVER['DOCUMENT_ROOT'] . "/hilos/101003/webviews/mis_fichadas/inc/config.php";
-include_once $_SERVER['DOCUMENT_ROOT'] . "/hilos/101003/webviews/mis_fichadas/inc/database.php";
+if (file_exists(__DIR__ . "/../inc/config.php")) {
+    require_once __DIR__ . "/../inc/config.php";
+}
+
+if (file_exists(__DIR__ . "/../inc/database.php")) {
+    require_once __DIR__ . "/../inc/database.php";
+}
 
 class FormularioModel
 {

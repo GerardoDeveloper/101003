@@ -14,7 +14,10 @@ try {
     $timestamp = $fecha->getTimestamp();
 
     if (BOT_IN_PRODUCTION) {
+
         if (isset($_GET) || isset($_POST)) {
+
+            // La variable superglobal $_REQUEST obtiene el valor las variables tanto por POST como por GET.
             if (isset($_REQUEST["userid"])) {
                 $userId = $_REQUEST["userid"];
             } else {
@@ -23,22 +26,10 @@ try {
             }
         }
 
-        // if (isset($_GET) || isset($_POST)) {
-        //     if (isset($_GET["userid"]) && !empty($_GET["userid"])) {
-        //         $userId = $_GET["userid"];
-        //     } else {
-        //         if (isset($_POST["userid"]) && !empty($_POST["userid"])) {
-        //             $userId = $_POST["userid"];
-        //         } else {
-        //             $userId = "";
-
-        //             die();
-        //         }
-        //     }
-        // }
 
         $_SESSION["userid"] = $userId;
 
+        // La variable superglobal $_REQUEST obtiene el valor las variables tanto por POST como por GET.
         if (isset($_REQUEST["conid"]) && !empty($_REQUEST["conid"])) {
             $origen = "web";
             $conId = $_REQUEST["conid"];
@@ -46,15 +37,8 @@ try {
             $origen = "facebook";
         }
 
-        // if (isset($_GET["conid"]) && !empty($_GET["conid"])) {
-        //     $origen = "web";
-        // } else if (isset($_POST["conid"]) && !empty($_POST["conid"])) {
-        //     $origen = "web";
-        // } else {
-        //     $origen = "facebook";
-        // }
-
         if (($origen == "web" && array_key_exists("HTTP_SEC_FETCH_DEST", $_SERVER) && $_SERVER["HTTP_SEC_FETCH_DEST"] == "iframe") || $origen == "facebook") {
+
             $instancia = FormularioController::getInstance();
             $instancia->insertFormulario($userId, date("Y/m/d H:i:s"), $origen);
 
@@ -117,12 +101,6 @@ try {
                 if (isset($_REQUEST["conid"]) && !empty($_REQUEST["conid"])) {
                     $_SESSION["conid"] = $_REQUEST["conid"];
                 }
-
-                // if (isset($_GET["conid"]) && !empty($_GET["conid"])) {
-                //     $_SESSION["conid"] = $_GET["conid"];
-                // } else if (isset($_POST["conid"]) && !empty($_POST["conid"])) {
-                //     $_SESSION["conid"] = $_POST["conid"];
-                // }
 
                 if ($_SESSION["conid"]) {
                     echo '<input type="hidden" name="conid" id="conid" value="' . $_SESSION["conid"] . '" data-value="' . $_SESSION["conid"] . '" />';
