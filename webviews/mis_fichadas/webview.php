@@ -1,39 +1,42 @@
 <?php
+
+/**
+ * Importaciones de scripts
+ */
+error_reporting(E_ALL ^ E_NOTICE ^ E_WARNING);
+session_start();
+
+include_once "inc/functions.php";
+include_once "controller/formulario.controller.php";
+
 if (file_exists(__DIR__ . "/../../config.php")) {
     require_once __DIR__ . "/../../config.php";
 }
 
 try {
-    error_reporting(E_ALL ^ E_NOTICE ^ E_WARNING);
-    session_start();
-
-    include_once "inc/functions.php";
-    include_once "controller/formulario.controller.php";
-
     $fecha = new DateTime();
     $timestamp = $fecha->getTimestamp();
 
     if (BOT_IN_PRODUCTION) {
-        if (isset($_GET) || isset($_POST)) {
-            if (isset($_GET["userid"]) && !empty($_GET["userid"])) {
-                $userId = $_GET["userid"];
-            } else {
-                if (isset($_POST["userid"]) && !empty($_POST["userid"])) {
-                    $userId = $_POST["userid"];
-                } else {
-                    $userId = "";
 
-                    die();
-                }
+        if (isset($_GET) || isset($_POST)) {
+
+            // La variable superglobal $_REQUEST obtiene el valor de las variables tanto por GET como por POST.
+            if (isset($_REQUEST["userid"])) {
+                $userId = $_REQUEST["userid"];
+            } else {
+                $userId = "";
+                die();
             }
         }
 
+
         $_SESSION["userid"] = $userId;
 
-        if (isset($_GET["conid"]) && !empty($_GET["conid"])) {
+        // La variable superglobal $_REQUEST obtiene el valor de las variables tanto por GET como por POST.
+        if (isset($_REQUEST["conid"]) && !empty($_REQUEST["conid"])) {
             $origen = "web";
-        } else if (isset($_POST["conid"]) && !empty($_POST["conid"])) {
-            $origen = "web";
+            $conId = $_REQUEST["conid"];
         } else {
             $origen = "facebook";
         }
@@ -97,10 +100,9 @@ try {
                 <?php
                     unset($_SESSION["conid"]);
 
-                    if (isset($_GET["conid"]) && !empty($_GET["conid"])) {
-                        $_SESSION["conid"] = $_GET["conid"];
-                    } else if (isset($_POST["conid"]) && !empty($_POST["conid"])) {
-                        $_SESSION["conid"] = $_POST["conid"];
+                    // La variable superglobal $_REQUEST obtiene el valor de las variables tanto por GET como por POST.
+                    if (isset($_REQUEST["conid"]) && !empty($_REQUEST["conid"])) {
+                        $_SESSION["conid"] = $_REQUEST["conid"];
                     }
 
                     if ($_SESSION["conid"]) {

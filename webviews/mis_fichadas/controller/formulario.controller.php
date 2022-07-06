@@ -127,7 +127,6 @@ class FormularioController
      */
     private function findURLreplace($idMisFichadas, $text)
     {
-        $idMisFichadas = intval($idMisFichadas);
         $arrayTextLink = array(
             array(
                 "Nueva intranet home",
@@ -232,7 +231,7 @@ class FormularioController
 }
 
 /**
- * La variable superglobal $_REQUEST obtiene el valor las variables tanto por POST como por GET.
+ * La variable superglobal $_REQUEST obtiene el valor de las variables tanto por GET como por POST.
  */
 $function = ($_REQUEST["function"]) ? $_REQUEST["function"] : null;
 
@@ -255,7 +254,7 @@ if ($function != null) {
 function getDetallesMisFichadas()
 {
     if (isset($_REQUEST["idMisFichadas"]) && !empty($_REQUEST["idMisFichadas"])) {
-        $idMisFichadas = $_REQUEST["idMisFichadas"];
+        $idMisFichadas = intval($_REQUEST["idMisFichadas"]);
 
         $controller = FormularioController::getInstance();
         $result = $controller->getDetallesMisFichadas($idMisFichadas);
@@ -277,19 +276,19 @@ function updateFormulario()
     $timestamp = $fecha->getTimestamp();
 
     if (isset($_REQUEST["idMisFichadas"]) and !empty($_REQUEST["idMisFichadas"])) {
-        $idMisFichadas = $_REQUEST["idMisFichadas"];
-        $userid = base64_decode($_REQUEST["userid"]);
+        $idMisFichadas = intval($_REQUEST["idMisFichadas"]);
+        $conId = base64_decode($_REQUEST["conId"]);
     } else {
         return 0;
     }
 
     $fecha_fin = date("Y/m/d H:i:s");
     $controller = FormularioController::getInstance();
-    $r = $controller->updateFormulario($userid, $fecha_fin, $idMisFichadas);
+    $r = $controller->updateFormulario($conId, $fecha_fin, $idMisFichadas);
 
     if ($r[0] == 1) {
-        if (isset($_REQUEST["conid"]) && !empty($_REQUEST["conid"])) {
-            $_SESSION["conid"] = $_REQUEST["conid"];
+        if (isset($_REQUEST["conId"]) && !empty($_REQUEST["conId"])) {
+            $_SESSION["conid"] = $_REQUEST["conId"];
         }
         setLog(200, $r[1], true);
     } else {
@@ -298,4 +297,5 @@ function updateFormulario()
 
     return $r[0];
 }
+
 ?>

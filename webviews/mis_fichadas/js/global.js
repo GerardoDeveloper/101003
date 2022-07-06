@@ -93,12 +93,12 @@ $("#btnClose").on("click", function (event) {
 
     toggleFade(document.querySelector('.loader'));
 
-    let tipo_lic = $("#fichadas");
-    let opt = tipo_lic[0][tipo_lic[0].selectedIndex].value;
+    let fichadas = $("#fichadas");
+    let idMisFichadas = fichadas[0][fichadas[0].selectedIndex].value;
     let data = new FormData();
 
-    data.append("userid", userId);
-    data.append("licencia", opt);
+    data.append("conId", conId);
+    data.append("idMisFichadas", idMisFichadas);
     data.append("function", "updateFormulario");
 
     $.ajax({
@@ -127,9 +127,9 @@ $("#fichadas").on("change", function () {
         $(this).css("display", "block");
     });
 
-    let opt = this.options[this.selectedIndex].value;
+    let idMisFichadas = this.options[this.selectedIndex].value;
     let data = new FormData($("#formData")[0]);
-    data.append("idMisFichadas", opt);
+    data.append("idMisFichadas", idMisFichadas);
     data.append("function", "getDetallesMisFichadas");
 
     $.ajax({
