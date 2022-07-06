@@ -93,8 +93,8 @@ $("#btnClose").on("click", function (event) {
 
     toggleFade(document.querySelector('.loader'));
 
-    let tipo_lic = $("#fichadas-equipo");
-    let idFichadasDeMiEquipo = tipo_lic[0][tipo_lic[0].selectedIndex].value;
+    let fichadas_equipo = $("#fichadas-equipo");
+    let idFichadasDeMiEquipo = fichadas_equipo[0][fichadas_equipo[0].selectedIndex].value;
     let data = new FormData();
 
     data.append("conId", conId);
