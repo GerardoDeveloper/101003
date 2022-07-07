@@ -21,7 +21,7 @@ if ($continuar == true) {
     require_once __DIR__ . "/functions.php";
     require_once __DIR__ . "/config.php";
 
-    // setLogDebug("Entro al bot con la palabra: $palabra");
+    setLogDebug("Entro al bot con la palabra: $palabra");
 
     $mailKeywords = array(
         "_derivar banco" => array(
