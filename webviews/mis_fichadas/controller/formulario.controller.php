@@ -153,11 +153,11 @@ class FormularioController
 
                     // Sí es la opción "¿Qué hago si no puedo ingresar con mi usuario y contraseña?"
                     if ($idMisFichadas !== 3) {
-                        $anchor = "<a href=\"$substr2\" target=\"_blank\"><strong><u>$textToShow</strong></u></a>";
+                        $anchor = "<a href=\"$substr2\" target=\"_blank\"><u>$textToShow</u></a>";
                     } else {
                         // Concatena el texto para abrir el email en el dispositivo.
                         $substr2 = "mailto:" . $substr2;
-                        $anchor = "<a href=\"$substr2\" target=\"_blank\"><strong><u>$textToShow</strong></u></a>";
+                        $anchor = "<a href=\"$substr2\" target=\"_blank\"><u>$textToShow</u></a>";
                     }
 
                     $textoFinal = str_replace($findURL, $anchor, $text);
@@ -180,7 +180,7 @@ class FormularioController
                         $substr2 = substr($substr, 0, $finalURL);
                         $findURL = "\${" . $substr2 . "}";
                         $textToShow = (isset($arrayTextLink[0][$c])) ? $arrayTextLink[0][$c] : $substr2;
-                        $anchor = "<a href=\"$substr2\" target=\"_blank\"><strong><u>$textToShow</strong></u></a>";
+                        $anchor = "<a href=\"$substr2\" target=\"_blank\"><u>$textToShow</u></a>";
                         $textoFinal = str_replace($findURL, $anchor, $link);
 
                         array_push($arrayLinks, array(

@@ -172,3 +172,106 @@ function sendEmailSobreLicencias($name, $lastName, $legajo, $arrayResultQuery)
         }
     }
 }
+
+/**
+ * Undocumented function
+ *
+ * @param [type] $text
+ * @return void
+ */
+function findCaraterReplace($text)
+{
+    try {
+        if (isset($text) && !empty($text)) {
+            $inicioURL = stripos($text, "*");
+            $substr = substr($text, $inicioURL + 1);
+            $finalURL = stripos($substr, "*");
+            $substr2 = substr($substr, 0, $finalURL);
+            $findURL = "*" . $substr2 . "*";
+            $characterNegrita = "\"$substr2\"";
+            $textoFinal = str_replace($findURL, $characterNegrita, $text);
+
+            return $textoFinal;
+        } else {
+            return $text;
+        }
+    } catch (Exception $e) {
+        $line = $e->getLine();
+        $file = $e->getFile();
+        $trace = $e->getTraceAsString();
+        $message = $e->getMessage();
+        $error = "Ha ocurrido un error:\nLínea: $line\nFile: $file\nTrace:\n$trace\n" . $message . "\n\n" . "===================================================================================================================================================================";
+
+        $fecha = date("Y/m/d H:i:s");
+        file_put_contents(__DIR__ . '/error.log', $fecha . "\n" . "Error: " . $error . "\n\n", FILE_APPEND);
+        error_log($error);
+
+        return "";
+    }
+}
+
+/**
+ * Crea un botón con texto.
+ *
+ * @param string $sender N° de identificación del usuario.
+ * @param string $text El texto de la descripción del mensaje.
+ * @param string $urlForm URL del formulario.
+ * @param string $textButton Texto del botón.
+ * @param array $quick_replies Botones de la burbuja.
+ * @return array
+ */
+function createOneButton($sender, $text, $urlForm, $textButton, $quick_replies)
+{
+    try {
+        $isValidateAllData = isset($sender) && !empty($sender) &&
+                          isset($text) && !empty($text) &&
+                          isset($urlForm) && !empty($urlForm) &&
+                          isset($textButton) && !empty($textButton) &&
+                          isset($quick_replies) && !empty($quick_replies);
+        if ($isValidateAllData) {
+            $data = array(
+                "recipient" => array(
+                    "id" => $sender,
+                ),
+                "message" => array(
+                    "attachment" => array(
+                        "type" => "template",
+                        "payload" => array(
+                            "template_type" => "button",
+                            "text" => $text,
+                            "buttons" => array(
+                                array(
+                                    "type" => "web_url",
+                                    "url" => $urlForm,
+                                    "fallback_url" => $urlForm,
+                                    "title" => $textButton,
+                                    "webview_height_ratio" => "tall",
+                                    "messenger_extensions" => true,
+                                    "webview_share_button" => "hide",
+                                ),
+                            ),
+                        ),
+                    ),
+                    "quick_replies" => $quick_replies,
+                ),
+            );
+
+            return $data;
+        } else {
+            # code...
+        }
+
+    } catch (Exception $e) {
+        $line = $e->getLine();
+        $file = $e->getFile();
+        $trace = $e->getTraceAsString();
+        $message = $e->getMessage();
+        $error = "Ha ocurrido un error:\nLínea: $line\nFile: $file\nTrace:\n$trace\n" . $message . "\n\n" . "===================================================================================================================================================================";
+
+        $fecha = date("Y/m/d H:i:s");
+        file_put_contents(__DIR__ . '/error.log', $fecha . "\n" . "Error: " . $error . "\n\n", FILE_APPEND);
+        error_log($error);
+
+        return "";
+    }
+}

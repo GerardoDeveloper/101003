@@ -155,7 +155,7 @@ class FormularioController
                         $index = ($this->evaluateSelected($idFichadasDeMiEquipo) !== -1) ?  $this->evaluateSelected($idFichadasDeMiEquipo): -1;
                         $a = $arrayTextLink[$index];
                         $textToShow = (isset($arrayTextLink[$index])) ? $arrayTextLink[$index] : $substr2;
-                        $anchor = "<a href=\"$substr2\" target=\"_blank\"><strong><u>$textToShow</strong></u></a>";
+                        $anchor = "<a href=\"$substr2\" target=\"_blank\"><u>$textToShow</u></a>";
                         $textoFinal = str_replace($findURL, $anchor, $text);
 
                         array_push($arrayLinks, array(
@@ -176,7 +176,7 @@ class FormularioController
                             $findURL = "\${" . $substr2 . "}";
                             $index = ($this->evaluateSelected($idFichadasDeMiEquipo) !== -1) ?  $this->evaluateSelected($idFichadasDeMiEquipo): -1;
                             $textToShow = (isset($arrayTextLink[$index][$c])) ? $arrayTextLink[$index][$c] : $substr2;
-                            $anchor = "<a href=\"$substr2\" target=\"_blank\"><strong><u>$textToShow</strong></u></a>";
+                            $anchor = "<a href=\"$substr2\" target=\"_blank\"><u>$textToShow</u></a>";
                             $textoFinal = str_replace($findURL, $anchor, $link);
 
                             array_push($arrayLinks, array(
