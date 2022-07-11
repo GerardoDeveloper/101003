@@ -51,9 +51,6 @@ const cerrarWebview = () => {
     js.id = id;
     js.src = "//connect.facebook.com/en_US/messenger.Extensions.js";
     fjs.parentNode.insertBefore(js, fjs);
-
-    const totalHeight = window.innerHeight;
-    document.getElementsByClassName("container")[0].style.height = totalHeight + "px";
 }(document, 'script', 'Messenger'));
 
 window.extAsyncInit = function () {
@@ -145,7 +142,7 @@ $("#tipo_licencia").on("change", function () {
             toggleFade(document.querySelector('.loader'));
 
             let resData = JSON.parse(res);
-            $("#detale_licencia").text(resData.cantidad_dias + "\n\n" + resData.observaciones);
+            $("#detale_licencia").text(resData.cantidad_dias + (resData.cantidad_dias.trim() !== "" ? "\n\n" : "") + resData.observaciones);
         },
         error: function (e) {
             console.log("Error Updating");

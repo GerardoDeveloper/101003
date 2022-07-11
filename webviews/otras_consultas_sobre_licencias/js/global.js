@@ -49,9 +49,6 @@ const cerrarWebview = () => {
     js.id = id;
     js.src = "//connect.facebook.com/en_US/messenger.Extensions.js";
     fjs.parentNode.insertBefore(js, fjs);
-
-    const totalHeight = window.innerHeight;
-    document.getElementsByClassName("container")[0].style.height = totalHeight + "px";
 }(document, 'script', 'Messenger'));
 
 window.extAsyncInit = function () {
