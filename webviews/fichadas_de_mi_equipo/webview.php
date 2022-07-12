@@ -108,7 +108,7 @@ try {
                 ?>
                 <div class="mt-3 mb-3">
                     <select name="fichadas-equipo" id="fichadas-equipo" class="form-control fichadas-equipo_select" autocomplete="off" required onfocus="(this.options[0].style.display='none')">
-                        <option value="" disabled selected>Selecciona el tipo de fichada del equipo</option>
+                        <option value="" disabled selected>Selecciona tu consulta</option>
                         <?php echo $fichadasDeMiEquipo; ?>
                     </select>
                 </div>

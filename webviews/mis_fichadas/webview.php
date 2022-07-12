@@ -111,7 +111,7 @@ try {
                 ?>
                 <div class="mt-3 mb-3">
                     <select name="fichadas" id="fichadas" class="form-control fichadas_select" autocomplete="off" required onfocus="(this.options[0].style.display='none')">
-                        <option value="" disabled selected>Selecciona el tipo de licencia</option>
+                        <option value="" disabled selected>Selecciona tu consulta</option>
                         <?php echo $misFichadas; ?>
                     </select>
                 </div>
